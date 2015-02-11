@@ -2,7 +2,7 @@ package com.droid080419.droid080419.elevenfifty_nine;
 /**
  * Write a description of class DataAccessObject here.
  * 
- * @author Loie Buera
+ * @author Louie Buera
  * @version Nov. 19, 2014, 8:22 AM
  */
 

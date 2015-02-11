@@ -16,11 +16,13 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import android.content.Context;
+import java.io.FileInputStream;
 
 public class DataAccessObject
 {
 
-    public static void test(){
+    /*public static void test(){
         Transfer tr = new Transfer();
         tr.setDescription("testing123");
         tr.setStartDate(new Date());
@@ -42,14 +44,15 @@ public class DataAccessObject
         tr.setRepeatUntil(new Date());
         arr.add(tr);
         try{
-            save(arr,file);
+            save(arr,);
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
-    }
+    }*/
     
-    public static void save(ArrayList<Transfer> list, File f) throws FileNotFoundException
+    public static void save(ArrayList<Transfer> list,Context cont) throws FileNotFoundException
     {
+        File f = new File(cont.getFilesDir(),"DATA.evt");
         PrintWriter pw = new PrintWriter(f);
         for(Transfer t: list){
             pw.println("Transfer::");
@@ -66,8 +69,9 @@ public class DataAccessObject
     }
     
     @SuppressLint("SimpleDateFormat")
-	public static ArrayList<Transfer> load(InputStream f) throws FileNotFoundException,NullPointerException
+	public static ArrayList<Transfer> load(Context cont) throws FileNotFoundException,NullPointerException
     {
+        InputStream f = new FileInputStream(new File(cont.getFilesDir(),"DATA.evt"));
         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
         Transfer curr = null;
         ParsePosition pos = new ParsePosition(0);

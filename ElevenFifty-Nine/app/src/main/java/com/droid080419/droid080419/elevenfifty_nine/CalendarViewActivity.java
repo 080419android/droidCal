@@ -1,18 +1,33 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 
 public class CalendarViewActivity extends ActionBarActivity {
 
+     ListView events;
+     ArrayAdapter<CalendarData> eventsAdapter;
+     List<CalendarData> eventsList;
+
      @Override
      protected void onCreate(Bundle savedInstanceState) {
-          CalendarGlobals.calDC = new CalendarDataController(this.getBaseContext());
+          CalendarGlobals.calDC = new CalendarDataController(this);
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_calendar_view);
+
+          events = (ListView)findViewById(R.id.eventsList);
+          eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
+          events.setAdapter(eventsAdapter);
      }
 
 
@@ -31,10 +46,23 @@ public class CalendarViewActivity extends ActionBarActivity {
           int id = item.getItemId();
 
           //noinspection SimplifiableIfStatement
+
+          switch(id){
+               case R.id.action_add:
+                    Intent intent = new Intent(this, AddTaskActivity.class);
+                    startActivity(intent);
+          }
+
           if (id == R.id.action_settings) {
                return true;
           }
 
           return super.onOptionsItemSelected(item);
+     }
+
+     public void loadEvents(){
+
+          eventsList = CalendarGlobals.calDC.getAllEvents();
+
      }
 }

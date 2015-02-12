@@ -16,4 +16,7 @@
      <string name="default_date_text">January 1, 1971</string>
      <string name="defualt_time_text">12:00 am</string>
 
+     <string name="action_add">Add Event</string>
+
+
 </resources>

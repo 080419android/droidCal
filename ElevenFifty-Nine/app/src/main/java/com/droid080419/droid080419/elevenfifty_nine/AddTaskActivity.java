@@ -1,5 +1,6 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -65,12 +66,15 @@ public class AddTaskActivity extends ActionBarActivity {
           return super.onOptionsItemSelected(item);
      }
 
+
      public void saveData(View view){
           Date now = new Date();
           ParsePosition pos = new ParsePosition(0);
           Timestamp tNow = new Timestamp(now.getTime());
 
           int id = Integer.parseInt(tNow.toString());
+
+          Intent intent = new Intent(this, CalendarViewActivity.class);
 
           CalendarData data = new CalendarData(id, this.getBaseContext());
           String start = eStartDate.getText() + " - " + eStartTime.getText();
@@ -88,5 +92,6 @@ public class AddTaskActivity extends ActionBarActivity {
 
           CalendarGlobals.calDC.addEvent(data);
 
+          startActivity(intent);
      }
 }

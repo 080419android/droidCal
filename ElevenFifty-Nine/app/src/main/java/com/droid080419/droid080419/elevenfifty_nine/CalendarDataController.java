@@ -46,6 +46,16 @@ public class CalendarDataController {
           return calDataMap.get(key);
      }
 
+     public List<CalendarData> getAllEvents(){
+          List<CalendarData> list = new ArrayList<CalendarData>();
+
+          for(String date: calDataMap.keySet()){
+               list.addAll(calDataMap.get(date));
+          }
+
+          return list;
+     }
+
      public void addEvent(CalendarData data){
           String date = sdf.format(data.getStartDate());
 

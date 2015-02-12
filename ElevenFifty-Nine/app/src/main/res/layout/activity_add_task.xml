@@ -136,6 +136,7 @@
                android:layout_marginBottom="48dp"
                android:layout_alignParentBottom="true"
                android:layout_alignParentEnd="true"
-               android:layout_alignParentStart="true"/>
+               android:layout_alignParentStart="true"
+               android:onClick="saveData"/>
 
 </RelativeLayout>

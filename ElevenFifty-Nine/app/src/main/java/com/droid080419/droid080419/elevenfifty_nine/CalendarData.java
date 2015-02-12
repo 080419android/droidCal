@@ -39,6 +39,23 @@ public class CalendarData
      private CalendarDataAccess calDA;
 
 
+     public CalendarData(File file){
+          sdf  = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+          try {
+               if(!file.exists())
+                    file.createNewFile();
+
+               calDA = new CalendarDataAccess(file);
+               loadData();
+
+          }catch(FileNotFoundException e){
+               Log.e("FileNotFoundException", e.getStackTrace().toString());
+          }catch(IOException d){
+               Log.e("IOException", d.getStackTrace().toString());
+          }
+     }
+
+
      public CalendarData(int id, Context context){
           String fileName = "evt_"+id+".cevt";
           File file = new File(context.getFilesDir(),fileName);

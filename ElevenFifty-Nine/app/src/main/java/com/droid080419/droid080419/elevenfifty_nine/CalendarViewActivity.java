@@ -10,6 +10,7 @@ public class CalendarViewActivity extends ActionBarActivity {
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
+          CalendarGlobals.calDC = new CalendarDataController(this.getBaseContext());
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_calendar_view);
      }

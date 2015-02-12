@@ -81,8 +81,8 @@ public class CalendarData
           setStartDate(sdf.parse(calDA.getData(CalendarDataField.START_DATE),pos));
           setEndDate(sdf.parse(calDA.getData(CalendarDataField.END_DATE),pos));
           setIsAllDay(Boolean.valueOf(calDA.getData(CalendarDataField.IS_ALL_DAY)));
-          setRepeatEvery(sdf.parse(calDA.getData(CalendarDataField.REPEAT_EVERY),pos));
-          setRepeatUntil(sdf.parse(calDA.getData(CalendarDataField.REPEAT_UNTIL),pos));
+          /*setRepeatEvery(sdf.parse(calDA.getData(CalendarDataField.REPEAT_EVERY),pos));
+          setRepeatUntil(sdf.parse(calDA.getData(CalendarDataField.REPEAT_UNTIL),pos));*/
 
 
      }
@@ -155,7 +155,7 @@ public class CalendarData
           calDA.writeData(CalendarDataField.START_DATE,getStartDate().toString());
           calDA.writeData(CalendarDataField.END_DATE,getEndDate().toString());
           calDA.writeData(CalendarDataField.IS_ALL_DAY, getIsAllDay().toString());
-          calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
-          calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());
+         /*calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
+         calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());*/
      }
 }

@@ -30,7 +30,7 @@
                          android:id="@+id/eventName"
                          android:text="Event Name"/>
 
-               <EditText
+               EditText
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
                          android:id="@+id/location"
@@ -133,9 +133,9 @@
                android:layout_height="wrap_content"
                android:text="Save"
                android:id="@+id/button"
-               android:layout_marginBottom="134dp"
+               android:layout_marginBottom="48dp"
                android:layout_alignParentBottom="true"
-               android:layout_alignParentStart="true"
-               android:layout_alignParentEnd="true"/>
+               android:layout_alignParentEnd="true"
+               android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

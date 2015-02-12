@@ -9,6 +9,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import java.sql.Timestamp;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -21,6 +23,8 @@ public class AddTaskActivity extends ActionBarActivity {
      EditText eEndDate;
      EditText eEndTime;
      CheckBox cAllDay;
+     SimpleDateFormat sdf;
+
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,8 @@ public class AddTaskActivity extends ActionBarActivity {
           eEndDate = (EditText)findViewById(R.id.endDate);
           eEndTime = (EditText)findViewById(R.id.endTime);
           cAllDay = (CheckBox)findViewById(R.id.allDayBox);
+
+          sdf = new SimpleDateFormat("MMMMM dd, yyyy - h:mm a");
      }
 
 
@@ -61,8 +67,26 @@ public class AddTaskActivity extends ActionBarActivity {
 
      public void saveData(View view){
           Date now = new Date();
+          ParsePosition pos = new ParsePosition(0);
           Timestamp tNow = new Timestamp(now.getTime());
+
           int id = Integer.parseInt(tNow.toString());
+
           CalendarData data = new CalendarData(id, this.getBaseContext());
+          String start = eStartDate.getText() + " - " + eStartTime.getText();
+          String end = eEndDate.getText() + " - " + eEndTime.getText();
+
+          Date startDate = sdf.parse(start,pos);
+          Date endDate = sdf.parse(end,pos);
+
+          data.setStartDate(startDate);
+          data.setEndDate(endDate);
+          data.setName(eName.getText().toString());
+          data.setDescription(eDesc.getText().toString());
+
+          data.save();
+
+          CalendarGlobals.calDC.addEvent(data);
+
      }
 }

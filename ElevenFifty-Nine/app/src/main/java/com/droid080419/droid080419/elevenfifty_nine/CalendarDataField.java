@@ -6,9 +6,4 @@ package com.droid080419.droid080419.elevenfifty_nine;
 public enum CalendarDataField {
      ID, NAME, START_DATE, END_DATE, REPEAT_EVERY, REPEAT_UNTIL, IS_ALL_DAY, DESCRIPTION;
 
-     @Override
-     public String toString(){
-          String ret = super.toString().toLowerCase();
-     return ret;
-     }
 }

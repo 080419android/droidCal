@@ -45,8 +45,8 @@ public class CalendarData
                if(!file.exists())
                     file.createNewFile();
 
-               calDA = new CalendarDataAccess(file);
-               loadData();
+               calDA = new CalendarDataAccess(file,false);
+
 
           }catch(FileNotFoundException e){
                Log.e("FileNotFoundException", e.getStackTrace().toString());
@@ -59,13 +59,13 @@ public class CalendarData
      public CalendarData(int id, Context context){
           String fileName = "evt_"+id+".cevt";
           File file = new File(context.getFilesDir(),fileName);
+          setId(id);
           sdf  = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
           try {
                if(!file.exists())
                     file.createNewFile();
 
-               calDA = new CalendarDataAccess(file);
-               loadData();
+               calDA = new CalendarDataAccess(file,true);
 
           }catch(FileNotFoundException e){
                Log.e("FileNotFoundException", e.getStackTrace().toString());
@@ -77,11 +77,13 @@ public class CalendarData
      public void loadData(){
           ParsePosition pos = new ParsePosition(0);
           setName(calDA.getData(CalendarDataField.NAME));
+          Log.wtf("Description",calDA.getData(CalendarDataField.DESCRIPTION));
           setDescription(calDA.getData(CalendarDataField.DESCRIPTION));
+          Log.wtf("Start date",calDA.getData(CalendarDataField.START_DATE));
           setStartDate(sdf.parse(calDA.getData(CalendarDataField.START_DATE),pos));
-          setEndDate(sdf.parse(calDA.getData(CalendarDataField.END_DATE),pos));
+          /*setEndDate(sdf.parse(calDA.getData(CalendarDataField.END_DATE),pos));
           setIsAllDay(Boolean.valueOf(calDA.getData(CalendarDataField.IS_ALL_DAY)));
-          /*setRepeatEvery(sdf.parse(calDA.getData(CalendarDataField.REPEAT_EVERY),pos));
+          setRepeatEvery(sdf.parse(calDA.getData(CalendarDataField.REPEAT_EVERY),pos));
           setRepeatUntil(sdf.parse(calDA.getData(CalendarDataField.REPEAT_UNTIL),pos));*/
 
 
@@ -153,9 +155,10 @@ public class CalendarData
           calDA.writeData(CalendarDataField.NAME,getName());
           calDA.writeData(CalendarDataField.DESCRIPTION, getDescription());
           calDA.writeData(CalendarDataField.START_DATE,getStartDate().toString());
-          calDA.writeData(CalendarDataField.END_DATE,getEndDate().toString());
+          /*calDA.writeData(CalendarDataField.END_DATE,getEndDate().toString());
           calDA.writeData(CalendarDataField.IS_ALL_DAY, getIsAllDay().toString());
-         /*calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
+         calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
          calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());*/
+          calDA.save();
      }
 }

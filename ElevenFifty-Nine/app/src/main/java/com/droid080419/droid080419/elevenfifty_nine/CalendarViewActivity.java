@@ -1,5 +1,6 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class CalendarViewActivity extends ActionBarActivity {
+public class CalendarViewActivity extends Activity {
 
      ListView events;
      ArrayAdapter<CalendarData> eventsAdapter;
@@ -24,10 +25,10 @@ public class CalendarViewActivity extends ActionBarActivity {
           CalendarGlobals.calDC = new CalendarDataController(this);
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_calendar_view);
-
+          loadEvents();
           events = (ListView)findViewById(R.id.eventsList);
-          eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
-          events.setAdapter(eventsAdapter);
+          /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
+          events.setAdapter(eventsAdapter);*/
      }
 
 

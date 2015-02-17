@@ -31,12 +31,20 @@ public class CalendarDataAccess {
           String str = "false";
           Scanner dataScanner = new Scanner(this.dataFile);
           Log.w("What ", "What the fuck");
-          while(dataScanner.hasNextLine()){
+          while(dataScanner.hasNextLine()) {
                String curLine = dataScanner.nextLine();
                Log.w("curLine ", curLine);
-               String[] split = curLine.split("::");
-               Log.w("Line read", split[0] + "::" + split[1]);
-               ret.put(CalendarDataField.valueOf(split[0]),split[1]);
+               try {
+                    String[] split = curLine.split("::");
+                    Log.w("Line read", split[0] + "::" + split[1]);
+                    ret.put(CalendarDataField.valueOf(split[0]), split[1]);
+
+               }catch(ArrayIndexOutOfBoundsException e){
+                    String[] split = curLine.split("::");
+                    Log.w("Line read", split[0] + "::" + " ");
+                    ret.put(CalendarDataField.valueOf(split[0]), " ");
+
+               }
           }
 
           return ret;

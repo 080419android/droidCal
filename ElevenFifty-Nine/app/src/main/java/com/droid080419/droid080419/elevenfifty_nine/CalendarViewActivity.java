@@ -7,6 +7,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,7 +18,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class CalendarViewActivity extends Activity {
+public class  CalendarViewActivity extends Activity {
 
      ListView events;
      ArrayAdapter<CalendarData> eventsAdapter;
@@ -30,8 +33,33 @@ public class CalendarViewActivity extends Activity {
           events = (ListView)findViewById(R.id.eventsList);
           /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
           events.setAdapter(eventsAdapter);*/
+          ArrayAdapter adapt = new EventLineAdaptew();
+          events.setAdapter(adapt);
      }
 
+     private class EventLineAdapter extends ArrayAdapter<CalendarData>{
+
+          public EventLineAdapter(){
+               super(CalendarViewActivity.this,R.layout.event_line_view,eventsList);
+          }
+
+          @Override
+          public View getView(int position, View convertView, ViewGroup parent) {
+               //checking against null view
+               View itemView = convertView;
+               if(itemView == null){
+                    itemView = getLayoutInflater().inflate(R.layout.event_line_view,parent,false);
+               }
+
+               //find the event
+
+
+
+               //fill the view
+
+               return itemView;
+          }
+     }
 
      @Override
      public boolean onCreateOptionsMenu(Menu menu) {

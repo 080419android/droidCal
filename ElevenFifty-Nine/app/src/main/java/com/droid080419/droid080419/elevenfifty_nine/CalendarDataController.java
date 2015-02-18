@@ -36,6 +36,7 @@ public class CalendarDataController {
 
           for(File file: files){
                CalendarData data = new CalendarData(file);
+               data.loadData();
                addEvent(data);
           }
 

@@ -1,8 +1,10 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class AddTaskActivity extends ActionBarActivity {
+public class AddTaskActivity extends Activity {
 
      EditText eName;
      EditText eDesc;
@@ -72,15 +74,18 @@ public class AddTaskActivity extends ActionBarActivity {
           ParsePosition pos = new ParsePosition(0);
           Timestamp tNow = new Timestamp(now.getTime());
 
-          int id = Integer.parseInt(tNow.toString());
+          int id = (int)now.getTime();
 
           Intent intent = new Intent(this, CalendarViewActivity.class);
 
-          CalendarData data = new CalendarData(id, this.getBaseContext());
+          CalendarData data = new CalendarData(id, this);
           String start = eStartDate.getText() + " - " + eStartTime.getText();
           String end = eEndDate.getText() + " - " + eEndTime.getText();
+          Log.wtf("start date input", start);
 
           Date startDate = sdf.parse(start,pos);
+
+          Log.wtf("Date in parsed", startDate.toString());
           Date endDate = sdf.parse(end,pos);
 
           data.setStartDate(startDate);

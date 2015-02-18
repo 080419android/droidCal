@@ -2,7 +2,7 @@ package com.droid080419.droid080419.elevenfifty_nine;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+//import android.support.v7.app.ActionBarActivity;
 //import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +34,7 @@ public class  CalendarViewActivity extends Activity {
           events = (ListView)findViewById(R.id.eventsList);
           /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
           events.setAdapter(eventsAdapter);*/
-          ArrayAdapter adapt = new EventLineAdaptew();
+          ArrayAdapter adapt = new EventLineAdapter();
           events.setAdapter(adapt);
      }
 
@@ -52,10 +53,17 @@ public class  CalendarViewActivity extends Activity {
                }
 
                //find the event
-
-
+               CalendarData cal = eventsList.get(position);
 
                //fill the view
+              TextView eventName = (TextView)itemView.findViewById(R.id.event_name_view);
+              TextView startDate = (TextView)itemView.findViewById(R.id.start_date_view);
+              TextView endDate = (TextView)itemView.findViewById(R.id.end_date_view);
+
+              eventName.setText(cal.getName());
+              startDate.setText(cal.getStartDate().toString());
+              endDate.setText(cal.getEndDate().toString());
+
 
                return itemView;
           }

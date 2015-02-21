@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ public class  CalendarViewActivity extends Activity {
      ListView events;
      ArrayAdapter<CalendarData> eventsAdapter;
      List<CalendarData> eventsList;
+     public final static String data_holder = "com.droid080419.elevenfifty_nine.data_holder";
+
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,25 @@ public class  CalendarViewActivity extends Activity {
           events = (ListView)findViewById(R.id.eventsList);
           /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
           events.setAdapter(eventsAdapter);*/
+
+          //fills list  with items
           ArrayAdapter adapt = new EventLineAdapter();
           events.setAdapter(adapt);
+
+          registerClickCallback(); //make items in list clickable
+          CalendarGlobals.eventsList = eventsList;
+     }
+
+     public void registerClickCallback(){
+          events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    CalendarData cal = eventsList.get(position);
+                    Intent intent = new Intent(CalendarViewActivity.this,ViewTaskActivity.class);
+                    intent.putExtra(data_holder,position);
+                    startActivity(intent);
+               }
+          });
      }
 
      private class EventLineAdapter extends ArrayAdapter<CalendarData>{
@@ -57,22 +77,27 @@ public class  CalendarViewActivity extends Activity {
 
                //fill the view
                TextView eventName = (TextView)itemView.findViewById(R.id.event_name_view);
-               eventName.setText(cal.getName());
+               eventName.setText("Event Name:" + cal.getName());
 
                if(cal.getStartDate() != null){
                     TextView startDate = (TextView)itemView.findViewById(R.id.start_date_view);
-                    startDate.setText(cal.getStartDate().toString());
+                    startDate.setText("Start Date and Time:" + cal.getStartDate().toString());
                }
 
                if(cal.getEndDate() != null){
                     TextView endDate = (TextView)itemView.findViewById(R.id.end_date_view);
-                    endDate.setText(cal.getEndDate().toString());
+                    endDate.setText("End Date and Time:" + cal.getEndDate().toString());
                }
 
 
 
                return itemView;
           }
+
+          public CalendarData getItem(int position){
+               return eventsList.get(position);
+          }
+
      }
 
      @Override
@@ -109,4 +134,7 @@ public class  CalendarViewActivity extends Activity {
           eventsList = CalendarGlobals.calDC.getAllEvents();
 
      }
+
+
+
 }

@@ -20,6 +20,11 @@
             android:name=".AddTaskActivity"
             android:label="@string/title_activity_add_task" >
         </activity>
+        <activity
+            android:name=".ViewTaskActivity"
+            android:label="ViewTaskActivity"
+            android:parentActivityName=".CalendarViewActivity">
+        </activity>
     </application>
 
 </manifest>

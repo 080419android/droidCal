@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              >
 
      <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/event_name_view"
           android:layout_gravity="start"
-          android:contentDescription="Event Name"/>
+          android:contentDescription="Event Name"
+          />
 
      <TextView
           android:layout_width="match_parent"
@@ -24,4 +26,4 @@
           android:id="@+id/end_date_view"
           android:layout_gravity="start"
           android:contentDescription="End Date and Time"/>
-</RelativeLayout>
+</LinearLayout>

@@ -56,13 +56,19 @@ public class  CalendarViewActivity extends Activity {
                CalendarData cal = eventsList.get(position);
 
                //fill the view
-              TextView eventName = (TextView)itemView.findViewById(R.id.event_name_view);
-              TextView startDate = (TextView)itemView.findViewById(R.id.start_date_view);
-              TextView endDate = (TextView)itemView.findViewById(R.id.end_date_view);
+               TextView eventName = (TextView)itemView.findViewById(R.id.event_name_view);
+               eventName.setText(cal.getName());
 
-              eventName.setText(cal.getName());
-              startDate.setText(cal.getStartDate().toString());
-              endDate.setText(cal.getEndDate().toString());
+               if(cal.getStartDate() != null){
+                    TextView startDate = (TextView)itemView.findViewById(R.id.start_date_view);
+                    startDate.setText(cal.getStartDate().toString());
+               }
+
+               if(cal.getEndDate() != null){
+                    TextView endDate = (TextView)itemView.findViewById(R.id.end_date_view);
+                    endDate.setText(cal.getEndDate().toString());
+               }
+
 
 
                return itemView;

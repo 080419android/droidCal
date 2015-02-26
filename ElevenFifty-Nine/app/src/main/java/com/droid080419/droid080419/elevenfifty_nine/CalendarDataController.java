@@ -66,4 +66,12 @@ public class CalendarDataController {
           calDataMap.get(date).add(data);
      }
 
+     public void removeEvent(CalendarData data){
+          String date = sdf.format(data.getStartDate());
+          List<CalendarData> list =  calDataMap.get(date);
+          list.remove(data);
+          data.delete();
+
+     }
+
 }

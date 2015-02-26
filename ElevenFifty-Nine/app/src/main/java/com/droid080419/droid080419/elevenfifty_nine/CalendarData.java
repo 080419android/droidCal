@@ -155,10 +155,17 @@ public class CalendarData
           calDA.writeData(CalendarDataField.NAME,getName());
           calDA.writeData(CalendarDataField.DESCRIPTION, getDescription());
           calDA.writeData(CalendarDataField.START_DATE,getStartDate().toString());
-          /*calDA.writeData(CalendarDataField.END_DATE,getEndDate().toString());
+          calDA.writeData(CalendarDataField.END_DATE,getEndDate().toString());
           calDA.writeData(CalendarDataField.IS_ALL_DAY, getIsAllDay().toString());
-         calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
-         calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());*/
+          calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
+          calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());
           calDA.save();
      }
+
+     public void delete(){
+
+          dataFile.delete();
+
+     }
+
 }

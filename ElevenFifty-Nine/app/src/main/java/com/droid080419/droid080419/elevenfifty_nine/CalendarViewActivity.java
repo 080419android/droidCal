@@ -33,17 +33,17 @@ public class  CalendarViewActivity extends Activity {
           CalendarGlobals.calDC = new CalendarDataController(this);
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_calendar_view);
-          loadEvents();
-          events = (ListView)findViewById(R.id.eventsList);
+          //loadEvents();
+          //events = (ListView)findViewById(R.id.eventsList);
           /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
           events.setAdapter(eventsAdapter);*/
 
           //fills list  with items
-          adapt = new EventLineAdapter();
-          events.setAdapter(adapt);
+          //adapt = new EventLineAdapter();
+          //events.setAdapter(adapt);
 
-          registerClickCallback(); //make items in list clickable
-          CalendarGlobals.eventsList = eventsList;
+          //registerClickCallback(); //make items in list clickable
+          //CalendarGlobals.eventsList = eventsList;
      }
 
      @Override
@@ -51,11 +51,12 @@ public class  CalendarViewActivity extends Activity {
           super.onResume();
           loadEvents();
           events = (ListView)findViewById(R.id.eventsList);
+          adapt = new EventLineAdapter();
           events.setAdapter(adapt);
 
           registerClickCallback();
 
-
+          CalendarGlobals.eventsList = eventsList;
      }
 
      public void registerClickCallback(){

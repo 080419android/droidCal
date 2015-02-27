@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:id="@+id/view_start_time"
-                        android:text="@string/defualt_time_text"/>
+                        android:text="@string/default_time_text"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:id="@+id/view_end_time"
-                        android:text="@string/defualt_time_text"/>
+                        android:text="@string/default_time_text"/>
 
 
                 </LinearLayout>

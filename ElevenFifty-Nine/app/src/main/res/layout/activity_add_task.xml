@@ -67,7 +67,7 @@
                                    android:inputType="time"
                                    android:ems="10"
                                    android:id="@+id/startTime"
-                                   android:text="@string/defualt_time_text"/>
+                                   android:text="@string/default_time_text"/>
 
                     </LinearLayout>
                </LinearLayout>
@@ -103,7 +103,7 @@
                                    android:inputType="time"
                                    android:ems="10"
                                    android:id="@+id/endTime"
-                                   android:text="@string/defualt_time_text"/>
+                                   android:text="@string/default_time_text"/>
 
 
                     </LinearLayout>

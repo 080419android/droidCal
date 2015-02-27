@@ -1,6 +1,8 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -10,6 +12,9 @@ public class CalendarGlobals {
 
      public static CalendarDataController calDC;
      public static List<CalendarData> eventsList;
+     public static AltAddTaskActivity alt;
+     public static Boolean isStartDate;
+     public static Boolean isStartTime;
 
      /*public static String stringDate(Date dat){
           String hold = "";
@@ -56,10 +61,28 @@ public class CalendarGlobals {
      }*/
 
      public static String stringDate(Date dat){
-          return dat.toString().substring(0,10) + dat.toString().substring(25);
+          return dat.toString().substring(0,10) + dat.toString().substring(29);
      }
 
-     public static String stringTime(Date dat){
+     /*public static String stringTime(Date dat){
           return dat.toString().substring(12,19);
+     }*/
+
+     public static String stringTime(Date dat) {
+          int hours = dat.getHours();
+
+          if(hours < 12){
+               if(hours == 0)
+                    return "12:" + Integer.toString(dat.getMinutes()) + " AM";
+               return Integer.toString(hours) + ":" + Integer.toString(dat.getMinutes()) + " AM";
+          }else if(hours == 12){
+               if(dat.getMinutes() == 0)
+                    return "12 NN";
+               return "12:" + Integer.toString(dat.getMinutes()) + "PM";
+          }else{
+               return Integer.toString(hours - 12)
+                       + ":" + Integer.toString(dat.getMinutes()) + " PM";
+          }
+
      }
 }

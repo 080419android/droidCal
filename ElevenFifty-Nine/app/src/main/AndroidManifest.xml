@@ -18,7 +18,13 @@
         </activity>
         <activity
             android:name=".AddTaskActivity"
-            android:label="@string/title_activity_add_task" >
+            android:label="@string/title_activity_add_task"
+            android:parentActivityName=".CalendarViewActivity">
+        </activity>
+        <activity
+            android:name=".AltAddTaskActivity"
+            android:label="AltAddTaskActivity"
+            android:parentActivityName=".CalendarViewActivity">
         </activity>
         <activity
             android:name=".ViewTaskActivity"

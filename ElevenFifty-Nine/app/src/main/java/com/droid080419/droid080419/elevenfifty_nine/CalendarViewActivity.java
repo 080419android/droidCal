@@ -23,7 +23,7 @@ import java.util.List;
 public class  CalendarViewActivity extends Activity {
 
      ListView events;
-     ArrayAdapter<CalendarData> eventsAdapter;
+     ArrayAdapter adapt;
      List<CalendarData> eventsList;
      public final static String data_holder = "com.droid080419.elevenfifty_nine.data_holder";
 
@@ -39,11 +39,23 @@ public class  CalendarViewActivity extends Activity {
           events.setAdapter(eventsAdapter);*/
 
           //fills list  with items
-          ArrayAdapter adapt = new EventLineAdapter();
+          adapt = new EventLineAdapter();
           events.setAdapter(adapt);
 
           registerClickCallback(); //make items in list clickable
           CalendarGlobals.eventsList = eventsList;
+     }
+
+     @Override
+     protected void onResume() {
+          super.onResume();
+          loadEvents();
+          events = (ListView)findViewById(R.id.eventsList);
+          events.setAdapter(adapt);
+
+          registerClickCallback();
+
+
      }
 
      public void registerClickCallback(){
@@ -120,6 +132,11 @@ public class  CalendarViewActivity extends Activity {
                case R.id.action_add:
                     Intent intent = new Intent(this, AddTaskActivity.class);
                     startActivity(intent);
+          }
+
+          if(id == R.id.action_add_alt){
+               Intent intent = new Intent(this,AltAddTaskActivity.class);
+               startActivity(intent);
           }
 
           if (id == R.id.action_settings) {

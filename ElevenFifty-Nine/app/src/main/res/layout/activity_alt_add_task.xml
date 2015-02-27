@@ -54,21 +54,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <TextView
                         android:layout_width="246dp"
                         android:layout_height="wrap_content"
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/startDate"
-                        android:text="@string/default_date_text"/>
+                        android:text="@string/default_date_text"
+                        android:onClick="startDateDialog"/>
 
-                    <EditText
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="time"
                         android:ems="10"
                         android:id="@+id/startTime"
-                        android:text="@string/defualt_time_text"/>
+                        android:text="@string/default_time_text"
+                        android:onClick="startTimeDialog"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -90,21 +92,23 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <EditText
+                    <TextView
                         android:layout_width="245dp"
                         android:layout_height="wrap_content"
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/endDate"
-                        android:text="@string/default_date_text"/>
+                        android:text="@string/default_date_text"
+                        android:onClick="endDateDialog"/>
 
-                    <EditText
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="time"
                         android:ems="10"
                         android:id="@+id/endTime"
-                        android:text="@string/defualt_time_text"/>
+                        android:text="@string/default_time_text"
+                        android:onClick="endTimeDialog"/>
 
 
                 </LinearLayout>

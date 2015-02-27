@@ -59,7 +59,8 @@ public class ViewTaskActivity extends Activity {
      }
 
      public void deleteData(View view){
-
+          CalendarGlobals.calDC.removeEvent(dat);
+          super.finish();
      }
 
 }

@@ -109,7 +109,7 @@ public class AltAddTaskActivity extends FragmentActivity {
      public void saveData(View view){
           Date junk = new Date();  //junk data to fill in empty fields
 
-          CalendarData data = new CalendarData((int)junk.getTime(),this);
+          CalendarData data = new CalendarData(-((int)junk.getTime()),this);
 
           data.setStartDate(startDate);
           data.setEndDate(endDate);

@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -33,6 +34,7 @@ public class  CalendarViewActivity extends Activity {
           CalendarGlobals.calDC = new CalendarDataController(this);
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_calendar_view);
+          loadEvents();
           //loadEvents();
           //events = (ListView)findViewById(R.id.eventsList);
           /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
@@ -44,6 +46,7 @@ public class  CalendarViewActivity extends Activity {
 
           //registerClickCallback(); //make items in list clickable
           //CalendarGlobals.eventsList = eventsList;
+          CalendarGlobals.dir = this.getFilesDir();
      }
 
      @Override
@@ -81,6 +84,7 @@ public class  CalendarViewActivity extends Activity {
           public View getView(int position, View convertView, ViewGroup parent) {
                //checking against null view
                View itemView = convertView;
+               SimpleDateFormat  sdf  = new SimpleDateFormat("MMMM dd, yyyy HH:mm");
                if(itemView == null){
                     itemView = getLayoutInflater().inflate(R.layout.event_line_view,parent,false);
                }
@@ -94,12 +98,12 @@ public class  CalendarViewActivity extends Activity {
 
                if(cal.getStartDate() != null){
                     TextView startDate = (TextView)itemView.findViewById(R.id.start_date_view);
-                    startDate.setText("Start Date and Time:" + cal.getStartDate().toString());
+                    startDate.setText("Start Date and Time: " + sdf.format(cal.getStartDate()));
                }
 
                if(cal.getEndDate() != null){
                     TextView endDate = (TextView)itemView.findViewById(R.id.end_date_view);
-                    endDate.setText("End Date and Time:" + cal.getEndDate().toString());
+                    endDate.setText("End Date and Time: " + sdf.format(cal.getEndDate()));
                }
 
 

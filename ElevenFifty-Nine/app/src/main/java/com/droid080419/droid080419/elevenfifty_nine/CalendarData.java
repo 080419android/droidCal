@@ -14,7 +14,7 @@ import java.util.Date;
  * Transfer Object for the Data Access Object.
  * For use in system scheduler.
  *
- * @author Louie
+ * @author Louie, Genesis
  * @version Feb. 11, 2015, 09:38 AM
  */
 
@@ -24,7 +24,7 @@ public class CalendarData
 {
      // instance variables - replace the example below with your own
      private File dataFile;
-     private int id;
+     private String id;
      private Date start_date;
      private Date end_date;
      private Boolean is_all_day;
@@ -32,8 +32,6 @@ public class CalendarData
      private Date repeat_until;
      private String description;
      private String name;
-
-
 
      private SimpleDateFormat sdf;
      private CalendarDataAccess calDA;
@@ -58,8 +56,9 @@ public class CalendarData
 
      public CalendarData(int id, Context context){
           String fileName = "evt_"+id+".cevt";
+          Log.wtf("FileName",fileName);
           File file = new File(context.getFilesDir(),fileName);
-          setId(id);
+          setId(Integer.toString(id));
           sdf  = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
           try {
                if(!file.exists())
@@ -76,6 +75,8 @@ public class CalendarData
 
      public void loadData(){
           ParsePosition pos = new ParsePosition(0);
+          dataFile = new File(CalendarGlobals.dir,"evt_"+calDA.getData(CalendarDataField.ID) + ".cevt");
+          setId(calDA.getData(CalendarDataField.ID));
           setName(calDA.getData(CalendarDataField.NAME));
           Log.wtf("Description",calDA.getData(CalendarDataField.DESCRIPTION));
           setDescription(calDA.getData(CalendarDataField.DESCRIPTION));
@@ -98,7 +99,7 @@ public class CalendarData
                     description;
      }
 
-     public int getId(){
+     public String getId(){
           return id;
      }
 
@@ -124,7 +125,7 @@ public class CalendarData
           return name;
      }
 
-     public void setId(int id){
+     public void setId(String id){
           this.id = id;
      }
 
@@ -151,7 +152,7 @@ public class CalendarData
      }
 
      public void save(){
-          calDA.writeData(CalendarDataField.ID, Integer.toString(getId()));
+          calDA.writeData(CalendarDataField.ID, getId());
           calDA.writeData(CalendarDataField.NAME,getName());
           calDA.writeData(CalendarDataField.DESCRIPTION, getDescription());
           calDA.writeData(CalendarDataField.START_DATE,getStartDate().toString());
@@ -163,8 +164,9 @@ public class CalendarData
      }
 
      public void delete(){
-
-          dataFile.delete();
+          Log.wtf("dataFile",dataFile.toString());
+          Boolean b = dataFile.delete();
+          Log.wtf("deleted",b.toString());
 
      }
 

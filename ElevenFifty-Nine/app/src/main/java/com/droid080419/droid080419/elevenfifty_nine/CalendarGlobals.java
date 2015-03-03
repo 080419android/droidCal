@@ -1,5 +1,6 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -15,6 +16,7 @@ public class CalendarGlobals {
      public static AltAddTaskActivity alt;
      public static Boolean isStartDate;
      public static Boolean isStartTime;
+     public static File dir;
 
      /*public static String stringDate(Date dat){
           String hold = "";

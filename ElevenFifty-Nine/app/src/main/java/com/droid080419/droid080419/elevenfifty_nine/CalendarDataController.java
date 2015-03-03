@@ -74,4 +74,37 @@ public class CalendarDataController {
 
      }
 
+     public void updateEvent(CalendarData data, Map<String,Object> updates){
+
+          for(String key: updates.keySet()){
+               Object val = updates.get(key);
+               switch(CalendarDataField.valueOf(key.toUpperCase())){
+                    case NAME:{
+                         data.setName((String)val);
+                    }break;
+                    case START_DATE:{
+                         data.setStartDate((Date)val);
+                    }break;
+                    case END_DATE:{
+                         data.setEndDate((Date)val);
+                    }break;
+                    case REPEAT_EVERY:{
+                         data.setRepeatEvery((Date)val);
+                    }break;
+                    case REPEAT_UNTIL:{
+                         data.setRepeatUntil((Date)val);
+                    }break;
+                    case IS_ALL_DAY:{
+                         data.setIsAllDay((Boolean)val);
+                    }break;
+                    case DESCRIPTION:{
+                         data.setDescription((String)val);
+                    }break;
+               }
+
+          }
+
+
+     }
+
 }

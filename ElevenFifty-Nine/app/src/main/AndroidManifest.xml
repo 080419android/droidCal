@@ -31,6 +31,12 @@
             android:label="ViewTaskActivity"
             android:parentActivityName=".CalendarViewActivity">
         </activity>
+        <activity
+             android:name=".EditTaskActivity"
+             android:label="EditTaskActivity"
+             android:parentActivityName=".ViewTaskActivity">
+
+        </activity>
     </application>
 
 </manifest>

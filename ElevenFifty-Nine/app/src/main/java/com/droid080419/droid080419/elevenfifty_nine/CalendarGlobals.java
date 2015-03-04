@@ -13,10 +13,11 @@ public class CalendarGlobals {
 
      public static CalendarDataController calDC;
      public static List<CalendarData> eventsList;
-     public static AltAddTaskActivity alt;
+     public static TaskEditor alt;
      public static Boolean isStartDate;
      public static Boolean isStartTime;
      public static File dir;
+     public static CalendarData being_edited;
 
      /*public static String stringDate(Date dat){
           String hold = "";
@@ -86,5 +87,16 @@ public class CalendarGlobals {
                        + ":" + Integer.toString(dat.getMinutes()) + " PM";
           }
 
+     }
+
+     public static Date merge(Date date, Date time){
+          Date holder = new Date();
+          holder.setDate(date.getDate());
+          holder.setMonth(date.getMonth());
+          holder.setYear(date.getYear());
+          holder.setMinutes(time.getMinutes());
+          holder.setHours(time.getHours());
+          holder.setSeconds(time.getSeconds());
+          return holder;
      }
 }

@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 /**
  * Created by Louie on 2/26/2015.
  */
-public class AltAddTaskActivity extends FragmentActivity {
+public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      EditText eName;
      EditText eDesc;
      CheckBox cAllDay;
@@ -67,7 +67,7 @@ public class AltAddTaskActivity extends FragmentActivity {
      public boolean onOptionsItemSelected(MenuItem item) {
           // Handle action bar item clicks here. The action bar will
           // automatically handle clicks on the Home/Up button, so long
-          // as you specify a parent activity in AndroidManifest.xml.
+          // as you specify a parent activity in AndroidManiAltAddTaskActivityfest.xml.
           int id = item.getItemId();
 
           //noinspection SimplifiableIfStatement
@@ -86,6 +86,8 @@ public class AltAddTaskActivity extends FragmentActivity {
      }
 
      public void endTimeDialog(View view){
+
+
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartTime = false;
           DialogFragment newFrag = new TimePickerFragment();
@@ -111,8 +113,8 @@ public class AltAddTaskActivity extends FragmentActivity {
 
           CalendarData data = new CalendarData(-((int)junk.getTime()),this);
 
-          data.setStartDate(startDate);
-          data.setEndDate(endDate);
+          data.setStartDate(CalendarGlobals.merge(startDate,startTime));
+          data.setEndDate(CalendarGlobals.merge(endDate,endTime));
           data.setName(eName.getText().toString());
           data.setDescription(eDesc.getText().toString());
           data.setRepeatEvery(junk);
@@ -126,4 +128,63 @@ public class AltAddTaskActivity extends FragmentActivity {
           finish();
      }
 
+     @Override
+     public Date getStartDate() {
+          return startDate;
+     }
+
+     @Override
+     public Date getStartTime() {
+          return startTime;
+     }
+
+     @Override
+     public Date getEndDate() {
+          return endDate;
+     }
+
+     @Override
+     public Date getEndTime() {
+          return endTime;
+     }
+
+     @Override
+     public TextView getEStartDate() {
+          return eStartDate;
+     }
+
+     @Override
+     public TextView getEStartTime() {
+          return eStartTime;
+     }
+
+     @Override
+     public TextView getEEndDate() {
+          return eEndDate;
+     }
+
+     @Override
+     public TextView getEEndTime() {
+          return eEndTime;
+     }
+
+     @Override
+     public void setStartTime(Date startTime) {
+          this.startTime = startTime;
+     }
+
+     @Override
+     public void setStartDate(Date startDate) {
+          this.startDate = startDate;
+     }
+
+     @Override
+     public void setEndTime(Date endTime) {
+          this.endTime = endTime;
+     }
+
+     @Override
+     public void setEndDate(Date endDate) {
+          this.endDate = endDate;
+     }
 }

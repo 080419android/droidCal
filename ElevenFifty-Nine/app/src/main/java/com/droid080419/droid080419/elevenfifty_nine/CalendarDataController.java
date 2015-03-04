@@ -1,6 +1,7 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -70,7 +71,9 @@ public class CalendarDataController {
           String date = sdf.format(data.getStartDate());
           List<CalendarData> list =  calDataMap.get(date);
           list.remove(data);
+          Log.wtf("File",data.getDataFile().getPath());
           data.delete();
+
 
      }
 
@@ -104,7 +107,7 @@ public class CalendarDataController {
 
           }
 
-
+          data.save();
      }
 
 }

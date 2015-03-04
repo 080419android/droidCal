@@ -16,7 +16,7 @@ import java.util.GregorianCalendar;
 public class DatePickerFragment extends DialogFragment
                               implements DatePickerDialog.OnDateSetListener{
 
-     AltAddTaskActivity assoc;     //assumes this field is always set before creating the fragment
+     TaskEditor assoc;     //assumes this field is always set before creating the fragment
      int year;
      int monthOfYear;
      int dayOfMonth;
@@ -29,13 +29,13 @@ public class DatePickerFragment extends DialogFragment
           int month;
 
           if(CalendarGlobals.isStartDate){
-               year = assoc.startDate.getYear() + 1900;
-               day = assoc.startDate.getDate();
-               month = assoc.startDate.getMonth();
+               year = assoc.getStartDate().getYear() + 1900;
+               day = assoc.getStartDate().getDate();
+               month = assoc.getStartDate().getMonth();
           }else{
-               year = assoc.endDate.getYear() + 1900;
-               day = assoc.endDate.getDate();
-               month = assoc.endDate.getMonth();
+               year = assoc.getEndDate().getYear() + 1900;
+               day = assoc.getEndDate().getDate();
+               month = assoc.getEndDate().getMonth();
           }
 
           return new DatePickerDialog(getActivity(),this,year,month,day);
@@ -54,11 +54,11 @@ public class DatePickerFragment extends DialogFragment
           cal.set(this.year,this.monthOfYear,this.dayOfMonth);
 
           if(CalendarGlobals.isStartDate){
-               assoc.startDate = cal.getTime();
-               assoc.eStartDate.setText(CalendarGlobals.stringDate(assoc.startDate));
+               assoc.setStartDate(cal.getTime());
+               assoc.getEStartDate().setText(CalendarGlobals.stringDate(assoc.getStartDate()));
           }else{
-               assoc.endDate = cal.getTime();
-               assoc.eEndDate.setText(CalendarGlobals.stringDate(assoc.endDate));
+               assoc.setEndDate(cal.getTime());
+               assoc.getEEndDate().setText(CalendarGlobals.stringDate(assoc.getEndDate()));
           }
 
           super.onDismiss(dialog);

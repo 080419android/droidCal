@@ -3,6 +3,7 @@ package com.droid080419.droid080419.elevenfifty_nine;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -28,6 +29,8 @@ public class ViewTaskActivity extends Activity {
           Intent intent = getIntent();
           position = intent.getIntExtra(CalendarViewActivity.data_holder,-1);
           dat = CalendarGlobals.eventsList.get(position);
+
+          Log.wtf("fetched data",dat.getName());
 
           //get text views
           name = (TextView)findViewById(R.id.view_event_name);
@@ -55,10 +58,14 @@ public class ViewTaskActivity extends Activity {
      }
 
      public void editData(View view){
-
+          Intent intent = new Intent(ViewTaskActivity.this,EditTaskActivity.class);
+          intent.putExtra(CalendarViewActivity.data_holder,position);
+          startActivity(intent);
      }
 
      public void deleteData(View view){
+          //Log.wtf();
+          dat.loadData();
           CalendarGlobals.calDC.removeEvent(dat);
           super.finish();
      }

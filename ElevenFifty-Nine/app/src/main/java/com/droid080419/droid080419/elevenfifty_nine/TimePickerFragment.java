@@ -17,7 +17,7 @@ import java.util.GregorianCalendar;
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
 
-     AltAddTaskActivity assoc;
+     TaskEditor assoc;
      int hourOfDay;
      int minute;
 
@@ -30,11 +30,11 @@ public class TimePickerFragment extends DialogFragment
           int minute;
 
           if(CalendarGlobals.isStartTime){
-               hour = assoc.startTime.getHours();
-               minute = assoc.startTime.getMinutes();
+               hour = assoc.getStartTime().getHours();
+               minute = assoc.getStartTime().getMinutes();
           }else{
-               hour = assoc.endTime.getHours();
-               minute = assoc.endTime.getMinutes();
+               hour = assoc.getEndTime().getHours();
+               minute = assoc.getEndTime().getMinutes();
           }
 
           // Create a new instance of TimePickerDialog and return it
@@ -54,11 +54,11 @@ public class TimePickerFragment extends DialogFragment
           cal.set(1,0,1,this.hourOfDay,this.minute);
 
           if(CalendarGlobals.isStartTime){
-               assoc.startTime = cal.getTime();
-               assoc.eStartTime.setText(CalendarGlobals.stringTime(assoc.startTime));
+               assoc.setStartTime(cal.getTime());
+               assoc.getEStartTime().setText(CalendarGlobals.stringTime(assoc.getStartTime()));
           }else{
-               assoc.endTime = cal.getTime();
-               assoc.eEndTime.setText(CalendarGlobals.stringTime(assoc.endTime));
+               assoc.setEndTime(cal.getTime());
+               assoc.getEEndTime().setText(CalendarGlobals.stringTime(assoc.getEndTime()));
           }
 
           super.onDismiss(dialog);

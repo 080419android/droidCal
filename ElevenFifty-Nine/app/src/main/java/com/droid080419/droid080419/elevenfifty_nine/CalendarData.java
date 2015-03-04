@@ -73,6 +73,10 @@ public class CalendarData
           }
      }
 
+     public File getDataFile(){
+          return dataFile;
+     }
+
      public void loadData(){
           ParsePosition pos = new ParsePosition(0);
           dataFile = new File(CalendarGlobals.dir,"evt_"+calDA.getData(CalendarDataField.ID) + ".cevt");
@@ -164,9 +168,9 @@ public class CalendarData
      }
 
      public void delete(){
-          Log.wtf("dataFile",dataFile.toString());
+          //Log.wtf("dataFile",dataFile.toString());
           Boolean b = dataFile.delete();
-          Log.wtf("deleted",b.toString());
+          //Log.wtf("deleted",b.toString());
 
      }
 

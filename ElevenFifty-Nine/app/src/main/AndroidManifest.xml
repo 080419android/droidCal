@@ -19,17 +19,21 @@
         <activity
             android:name=".AddTaskActivity"
             android:label="@string/title_activity_add_task"
-            android:parentActivityName=".CalendarViewActivity">
+            android:parentActivityName=".CalendarViewActivity" >
         </activity>
         <activity
             android:name=".AltAddTaskActivity"
             android:label="AltAddTaskActivity"
-            android:parentActivityName=".CalendarViewActivity">
+            android:parentActivityName=".CalendarViewActivity" >
         </activity>
         <activity
             android:name=".ViewTaskActivity"
             android:label="ViewTaskActivity"
-            android:parentActivityName=".CalendarViewActivity">
+            android:parentActivityName=".CalendarViewActivity" >
+        </activity>
+        <activity
+            android:name=".MonthCalendarActivtity"
+            android:label="@string/title_activity_month_calendar_activtity" >
         </activity>
         <activity
              android:name=".EditTaskActivity"

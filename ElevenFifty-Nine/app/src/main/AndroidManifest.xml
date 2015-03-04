@@ -38,7 +38,7 @@
         <activity
              android:name=".EditTaskActivity"
              android:label="EditTaskActivity"
-             android:parentActivityName=".ViewTaskActivity">
+             android:parentActivityName=".CalendarViewActivity">
 
         </activity>
     </application>

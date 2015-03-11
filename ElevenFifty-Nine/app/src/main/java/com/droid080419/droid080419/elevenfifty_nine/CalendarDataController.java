@@ -79,7 +79,7 @@ public class CalendarDataController {
 
      public void updateEvent(CalendarData data, Map<String,Object> updates){
 
-          Log.wtf("REPEAT EVERY",data.getRepeatEvery().toString());
+
           for(String key: updates.keySet()){
                Object val = updates.get(key);
                switch(CalendarDataField.valueOf(key.toUpperCase())){
@@ -93,6 +93,7 @@ public class CalendarDataController {
                     }break;
                     case END_DATE:{
                          data.setEndDate((Date)val);
+                         Log.w("END_DATE",data.getEndDate().toString());
                          //data.writeEndDateData();
                     }break;
                     case REPEAT_EVERY:{
@@ -118,7 +119,6 @@ public class CalendarDataController {
           //data.writeNameData();
 
           //data.saveChanges();
-
           data.save();
      }
 

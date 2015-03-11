@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -132,18 +133,18 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
 
           CalendarGlobals.calDC.addEvent(data);*/
 
-          dat.loadData();
 
           Map<String,Object> hm = new HashMap<>();
 
           hm.put("NAME",eName.getText().toString());
           hm.put("DESCRIPTION",eDesc.getText().toString());
           hm.put("START_DATE",CalendarGlobals.merge(startDate,startTime));
+          Log.w("MISSING",CalendarGlobals.merge(endDate,endTime).toString());
           hm.put("END_DATE",CalendarGlobals.merge(endDate,endTime));
           hm.put("REPEAT_EVERY",new Date());
+          hm.put("REPEAT_UNTIL",new Date());
 
           CalendarGlobals.calDC.updateEvent(dat,hm);
-
           finish();
      }
 

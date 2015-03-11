@@ -28,8 +28,11 @@ public class ViewTaskActivity extends Activity {
           setContentView(R.layout.activity_view_task);
           Intent intent = getIntent();
           position = intent.getIntExtra(CalendarViewActivity.data_holder,-1);
-          dat = CalendarGlobals.eventsList.get(position);
-
+          try {
+               dat = CalendarGlobals.eventsList.get(position);
+          }catch(NullPointerException e){
+               finish();
+          }
           Log.wtf("fetched data",dat.getName());
 
           //get text views
@@ -49,6 +52,19 @@ public class ViewTaskActivity extends Activity {
           }
           desc.setText(dat.getDescription());
 
+     }
+
+     @Override
+     public void onResume(){
+          super.onResume();
+          Log.wtf("Resume Message","RESUME");
+     }
+
+     @Override
+     public void onPause(){
+
+          super.onPause();
+          Log.wtf("Pause Message","PAUSE");
      }
 
      public boolean onCreateOptionsMenu(Menu menu) {

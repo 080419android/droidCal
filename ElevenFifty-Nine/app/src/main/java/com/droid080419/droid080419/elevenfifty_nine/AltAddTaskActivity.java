@@ -111,7 +111,7 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      public void saveData(View view){
           Date junk = new Date();  //junk data to fill in empty fields
 
-          CalendarData data = new CalendarData(-((int)junk.getTime()),this);
+          CalendarData data = new CalendarData(((int)junk.getTime()),this);
 
           data.setStartDate(CalendarGlobals.merge(startDate,startTime));
           data.setEndDate(CalendarGlobals.merge(endDate,endTime));

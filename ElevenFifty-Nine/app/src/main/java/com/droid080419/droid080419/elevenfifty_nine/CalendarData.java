@@ -167,6 +167,42 @@ public class CalendarData
           calDA.save();
      }
 
+     public void saveChanges(){
+          calDA.save();
+     }
+
+     public void writeIDData(){
+          calDA.writeData(CalendarDataField.ID,getId());
+     }
+
+     public void writeNameData(){
+          calDA.writeData(CalendarDataField.NAME,getName());
+     }
+
+     public void writeDescriptionData(){
+          calDA.writeData(CalendarDataField.DESCRIPTION,getDescription());
+     }
+
+     public void writeStartDateData(){
+          calDA.writeData(CalendarDataField.START_DATE,getStartDate().toString());
+     }
+
+     public void writeEndDateData(){
+          calDA.writeData(CalendarDataField.END_DATE,getEndDate().toString());
+     }
+
+     public void writeIsAllDayData(){
+          calDA.writeData(CalendarDataField.IS_ALL_DAY,getIsAllDay().toString());
+     }
+
+     public void writeRepeatEveryData(){
+          calDA.writeData(CalendarDataField.REPEAT_EVERY,getRepeatEvery().toString());
+     }
+
+     public void writeRepeatUntilData(){
+          calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());
+     }
+
      public void delete(){
           //Log.wtf("dataFile",dataFile.toString());
           Boolean b = dataFile.delete();

@@ -136,10 +136,11 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
 
           Map<String,Object> hm = new HashMap<>();
 
-          hm.put("NAME",eName.getText());
-          hm.put("DESCRIPTION",eDesc.getText());
+          hm.put("NAME",eName.getText().toString());
+          hm.put("DESCRIPTION",eDesc.getText().toString());
           hm.put("START_DATE",CalendarGlobals.merge(startDate,startTime));
           hm.put("END_DATE",CalendarGlobals.merge(endDate,endTime));
+          hm.put("REPEAT_EVERY",new Date());
 
           CalendarGlobals.calDC.updateEvent(dat,hm);
 

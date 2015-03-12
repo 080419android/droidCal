@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by Louie on 2/26/2015.
+ *
+ * Alternate activity for adding a task to the calendar. Will be renamed and replace AddTaskActivity
  */
 public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      EditText eName;
@@ -31,10 +33,13 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      Date endTime;
 
      @Override
-     protected void onCreate(Bundle savedInstanceState) {
+     protected void onCreate(Bundle savedInstanceState) {   //initializing the activity
           super.onCreate(savedInstanceState);
+
+          //setting layout
           setContentView(R.layout.activity_alt_add_task);
 
+          //getting views
           eName = (EditText)findViewById(R.id.eventName);
           eDesc = (EditText)findViewById(R.id.description);
           eStartDate = (TextView)findViewById(R.id.startDate);
@@ -43,11 +48,13 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           eEndTime = (TextView)findViewById(R.id.endTime);
           cAllDay = (CheckBox)findViewById(R.id.allDayBox);
 
+          //initializing date and time fields to current time
           startDate = new Date();
           endDate = new Date();
           startTime = new Date();
           endTime = new Date();
 
+          //updating views to date and time fields
           eStartDate.setText(CalendarGlobals.stringDate(startDate));
           eStartTime.setText(CalendarGlobals.stringTime(startTime));
           eEndDate.setText(CalendarGlobals.stringDate(endDate));
@@ -78,14 +85,14 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           return super.onOptionsItemSelected(item);
      }
 
-     public void startTimeDialog(View view){
+     public void startTimeDialog(View view){ //opens a dialog fragment to input start time
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartTime = true;
           DialogFragment newFrag = new TimePickerFragment();
           newFrag.show(getFragmentManager(),"timePicker");
      }
 
-     public void endTimeDialog(View view){
+     public void endTimeDialog(View view){   //opens a dialog fragment to input end time
 
 
           CalendarGlobals.alt = this;
@@ -94,14 +101,14 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           newFrag.show(getFragmentManager(),"timePicker");
      }
 
-     public void startDateDialog(View view){
+     public void startDateDialog(View view){ //opens a dialog fragment to input start date
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartDate = true;
           DialogFragment newFrag = new DatePickerFragment();
           newFrag.show(getFragmentManager(),"datePicker");
      }
 
-     public void endDateDialog(View view){
+     public void endDateDialog(View view){   //opens a dialog fragment to input end date
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartDate = false;
           DialogFragment newFrag = new DatePickerFragment();
@@ -109,10 +116,14 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      }
 
      public void saveData(View view){
+          //saves current data fields to calendar, is called when 'save' button is tapped
+
           Date junk = new Date();  //junk data to fill in empty fields
 
+          //construct new CalendarData object to add to calendar
           CalendarData data = new CalendarData(((int)junk.getTime()),this);
 
+          //set fields of data object
           data.setStartDate(CalendarGlobals.merge(startDate,startTime));
           data.setEndDate(CalendarGlobals.merge(endDate,endTime));
           data.setName(eName.getText().toString());
@@ -121,10 +132,13 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           data.setRepeatUntil(junk);
           data.setIsAllDay(true);
 
+          //save the data
           data.save();
 
+          //add task to calendar
           CalendarGlobals.calDC.addEvent(data);
 
+          //end the activity, returns to CalendarViewActivity
           finish();
      }
 

@@ -16,7 +16,7 @@ import java.util.GregorianCalendar;
 public class DatePickerFragment extends DialogFragment
                               implements DatePickerDialog.OnDateSetListener{
 
-     TaskEditor assoc;     //assumes this field is always set before creating the fragment
+     TaskEditor assoc;     //assumes CalendarGlobals.alt is always set before creating the fragment
      int year;
      int monthOfYear;
      int dayOfMonth;
@@ -28,6 +28,7 @@ public class DatePickerFragment extends DialogFragment
           int day;
           int month;
 
+          //checks if start or end date, to determine appropriate data sources
           if(CalendarGlobals.isStartDate){
                year = assoc.getStartDate().getYear() + 1900;
                day = assoc.getStartDate().getDate();
@@ -43,6 +44,7 @@ public class DatePickerFragment extends DialogFragment
 
      @Override
      public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+          //updates fields when date is set
           this.year = year;
           this.monthOfYear = monthOfYear;
           this.dayOfMonth = dayOfMonth;
@@ -50,6 +52,7 @@ public class DatePickerFragment extends DialogFragment
 
      @Override
      public void onDismiss(DialogInterface dialog) {
+          //updates data in assoc when this fragment is closed
           Calendar cal = new GregorianCalendar();
           cal.set(this.year,this.monthOfYear,this.dayOfMonth);
 

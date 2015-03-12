@@ -17,7 +17,7 @@ import java.util.GregorianCalendar;
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
 
-     TaskEditor assoc;
+     TaskEditor assoc;   //assumes CalendarGlobals.alt is always set before creating the fragment
      int hourOfDay;
      int minute;
 
@@ -29,6 +29,7 @@ public class TimePickerFragment extends DialogFragment
           int hour;
           int minute;
 
+          //checks if start or end time, to determine appropriate data sources
           if(CalendarGlobals.isStartTime){
                hour = assoc.getStartTime().getHours();
                minute = assoc.getStartTime().getMinutes();
@@ -44,12 +45,14 @@ public class TimePickerFragment extends DialogFragment
 
      @Override
      public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+          //updates fields when time is set
           this.hourOfDay = hourOfDay;
           this.minute = minute;
      }
 
      @Override
      public void onDismiss(DialogInterface dialog) {
+          //updates data in assoc when this fragment is closed
           Calendar cal = new GregorianCalendar();
           cal.set(1,0,1,this.hourOfDay,this.minute);
 

@@ -20,7 +20,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/*
 
+Main activity seen by user
+Displays tasks in calendar to user, which can be viewed by tapping
+
+ */
 public class  CalendarViewActivity extends Activity {
 
      ListView events;
@@ -33,19 +38,10 @@ public class  CalendarViewActivity extends Activity {
      protected void onCreate(Bundle savedInstanceState) {
           CalendarGlobals.calDC = new CalendarDataController(this);
           super.onCreate(savedInstanceState);
+          //set layout
           setContentView(R.layout.activity_calendar_view);
+          //load all events into calendar
           loadEvents();
-          //loadEvents();
-          //events = (ListView)findViewById(R.id.eventsList);
-          /*eventsAdapter=new ArrayAdapter<CalendarData>(this,R.layout.activity_calendar_view,eventsList);
-          events.setAdapter(eventsAdapter);*/
-
-          //fills list  with items
-          //adapt = new EventLineAdapter();
-          //events.setAdapter(adapt);
-
-          //registerClickCallback(); //make items in list clickable
-          //CalendarGlobals.eventsList = eventsList;
           CalendarGlobals.dir = this.getFilesDir();
      }
 
@@ -63,9 +59,11 @@ public class  CalendarViewActivity extends Activity {
      }
 
      public void registerClickCallback(){
+          //used to respond to taps on task items on ListView
           events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //starts TaskViewActivity
                     CalendarData cal = eventsList.get(position);
                     Intent intent = new Intent(CalendarViewActivity.this,ViewTaskActivity.class);
                     intent.putExtra(data_holder,position);
@@ -75,6 +73,7 @@ public class  CalendarViewActivity extends Activity {
      }
 
      private class EventLineAdapter extends ArrayAdapter<CalendarData>{
+          //provides data to event_line_view in ListView
 
           public EventLineAdapter(){
                super(CalendarViewActivity.this,R.layout.event_line_view,eventsList);
@@ -152,7 +151,7 @@ public class  CalendarViewActivity extends Activity {
      }
 
      public void loadEvents(){
-
+          //loads events from files
           eventsList = CalendarGlobals.calDC.getAllEvents();
 
      }

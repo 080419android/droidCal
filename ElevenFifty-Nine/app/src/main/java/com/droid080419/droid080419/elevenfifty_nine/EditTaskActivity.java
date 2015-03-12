@@ -19,6 +19,8 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by Louie on 2/26/2015.
+ *
+ * Allows a task to be edited
  */
 public class EditTaskActivity extends FragmentActivity implements TaskEditor{
      CalendarData dat;
@@ -39,12 +41,13 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
      protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_alt_add_task);
-
+          //get CalendarData to be updated
           Intent intent = getIntent();
           int position = intent.getIntExtra(CalendarViewActivity.data_holder,-1);
 
           dat = CalendarGlobals.eventsList.get(position);
 
+          //getting views
           eName = (EditText)findViewById(R.id.eventName);
           eDesc = (EditText)findViewById(R.id.description);
           eStartDate = (TextView)findViewById(R.id.startDate);
@@ -53,11 +56,13 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           eEndTime = (TextView)findViewById(R.id.endTime);
           cAllDay = (CheckBox)findViewById(R.id.allDayBox);
 
+          //getting fields from CalendarData
           startDate = dat.getStartDate();
           endDate = dat.getEndDate();
           startTime = dat.getStartDate();
           endTime = dat.getEndDate();
 
+          //updating views with data
           eStartDate.setText(CalendarGlobals.stringDate(startDate));
           eStartTime.setText(CalendarGlobals.stringTime(startTime));
           eEndDate.setText(CalendarGlobals.stringDate(endDate));
@@ -88,28 +93,28 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           return super.onOptionsItemSelected(item);
      }
 
-     public void startTimeDialog(View view){
+     public void startTimeDialog(View view){ //opens a dialog fragment to input start time
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartTime = true;
           DialogFragment newFrag = new TimePickerFragment();
           newFrag.show(getFragmentManager(),"timePicker");
      }
 
-     public void endTimeDialog(View view){
+     public void endTimeDialog(View view){   //opens a dialog fragment to input end time
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartTime = false;
           DialogFragment newFrag = new TimePickerFragment();
           newFrag.show(getFragmentManager(),"timePicker");
      }
 
-     public void startDateDialog(View view){
+     public void startDateDialog(View view){ //opens a dialog fragment to input start date
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartDate = true;
           DialogFragment newFrag = new DatePickerFragment();
           newFrag.show(getFragmentManager(),"datePicker");
      }
 
-     public void endDateDialog(View view){
+     public void endDateDialog(View view){   //opens a dialog fragment to input end date
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartDate = false;
           DialogFragment newFrag = new DatePickerFragment();
@@ -117,25 +122,10 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
      }
 
      public void saveData(View view){
-          /*Date junk = new Date();  //junk data to fill in empty fields
-
-          CalendarData data = new CalendarData(-((int)junk.getTime()),this);
-
-          data.setStartDate(startDate);
-          data.setEndDate(endDate);
-          data.setName(eName.getText().toString());
-          data.setDescription(eDesc.getText().toString());
-          data.setRepeatEvery(junk);
-          data.setRepeatUntil(junk);
-          data.setIsAllDay(true);
-
-          data.save();
-
-          CalendarGlobals.calDC.addEvent(data);*/
-
-
+          //creates hashmap to hold new data
           Map<String,Object> hm = new HashMap<>();
 
+          //puts data in hashmap
           hm.put("NAME",eName.getText().toString());
           hm.put("DESCRIPTION",eDesc.getText().toString());
           hm.put("START_DATE",CalendarGlobals.merge(startDate,startTime));
@@ -143,8 +133,10 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           hm.put("END_DATE",CalendarGlobals.merge(endDate,endTime));
           hm.put("REPEAT_EVERY",new Date());
           hm.put("REPEAT_UNTIL",new Date());
-
+          //updates data using hashmap
           CalendarGlobals.calDC.updateEvent(dat,hm);
+
+          //ends activity
           finish();
      }
 

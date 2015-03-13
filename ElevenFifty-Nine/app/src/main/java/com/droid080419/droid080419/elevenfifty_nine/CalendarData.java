@@ -36,7 +36,7 @@ public class CalendarData
      private SimpleDateFormat sdf;
      private CalendarDataAccess calDA;
 
-
+     //Uses an existing file to create a CalendarData Object and sets write to false
      public CalendarData(File file){
           sdf  = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
           try {
@@ -53,7 +53,7 @@ public class CalendarData
           }
      }
 
-
+     //Creates a new data file to using an id input and sets write to true
      public CalendarData(int id, Context context){
           String fileName = "evt_"+id+".cevt";
           Log.wtf("FileName",fileName);
@@ -73,10 +73,7 @@ public class CalendarData
           }
      }
 
-     public File getDataFile(){
-          return dataFile;
-     }
-
+     //Loads the Calendar data from the file
      public void loadData(){
           ParsePosition pos = new ParsePosition(0);
           dataFile = new File(CalendarGlobals.dir,"evt_"+calDA.getData(CalendarDataField.ID) + ".cevt");
@@ -94,6 +91,7 @@ public class CalendarData
 
      }
 
+     //Returns the String equivalent of the Object
      public String toString(){
           return start_date.toString() + "\n" +
                     end_date.toString() + "\n" +
@@ -103,10 +101,10 @@ public class CalendarData
                     description;
      }
 
+     //Getter functions
      public String getId(){
           return id;
      }
-
      public Date getStartDate(){
           return start_date;
      }
@@ -128,11 +126,14 @@ public class CalendarData
      public String getName(){
           return name;
      }
+     public File getDataFile(){
+          return dataFile;
+     }
 
+     //Setter functions
      public void setId(String id){
           this.id = id;
      }
-
      public void setStartDate(Date start_date){
           this.start_date = start_date;
      }
@@ -155,6 +156,7 @@ public class CalendarData
           this.name = name;
      }
 
+     //Saves the changes to the file
      public void save(){
           calDA.writeData(CalendarDataField.ID, getId());
           calDA.writeData(CalendarDataField.NAME,getName());
@@ -203,6 +205,7 @@ public class CalendarData
           calDA.writeData(CalendarDataField.REPEAT_UNTIL,getRepeatUntil().toString());
      }
 
+     //Deletes the file
      public void delete(){
           //Log.wtf("dataFile",dataFile.toString());
           Boolean b = dataFile.delete();

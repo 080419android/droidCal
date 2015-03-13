@@ -26,6 +26,7 @@ public class CalendarDataAccess {
                this.fileWriter = new PrintWriter(dataFile);
      }
 
+     //Loads the data for the Calendar Data from the file
      private Map<CalendarDataField,String> loadData()  throws FileNotFoundException, NullPointerException{
           Map<CalendarDataField, String> ret = new EnumMap<CalendarDataField, String>(CalendarDataField.class);
           String str = "false";
@@ -50,6 +51,7 @@ public class CalendarDataAccess {
           return ret;
      }
 
+     //Gets the data in the corresponding field
      public String getData(CalendarDataField field){
           return this.dataMap.get(field);
      }
@@ -60,6 +62,7 @@ public class CalendarDataAccess {
           this.fileWriter.println(field.toString() +"::"+data);
      }
 
+     //Saves the changes in the data file by closing the FileWriter
      public void save(){
           fileWriter.close();
      }

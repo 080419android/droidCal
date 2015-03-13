@@ -43,11 +43,13 @@ public class CalendarDataController {
 
      }
 
+     //Returns a list of Events on date
      public List<CalendarData> getEventsOnDate(Date date){
           String key = sdf.format(date);
           return calDataMap.get(key);
      }
 
+     //Returns all events
      public List<CalendarData> getAllEvents(){
           List<CalendarData> list = new ArrayList<CalendarData>();
 
@@ -58,6 +60,7 @@ public class CalendarDataController {
           return list;
      }
 
+     //Adds Event to the current Map
      public void addEvent(CalendarData data){
           String date = sdf.format(data.getStartDate());
 
@@ -67,6 +70,7 @@ public class CalendarDataController {
           calDataMap.get(date).add(data);
      }
 
+     //Removes the event and deletes its file
      public void removeEvent(CalendarData data){
           String date = sdf.format(data.getStartDate());
           List<CalendarData> list =  calDataMap.get(date);

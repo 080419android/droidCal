@@ -8,12 +8,16 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-/**
- * Created by Louie on 2/21/2015.
- *
+/*
+Author: Louie Buera
+License: 
+This is a course requirement for CS 192 Software Engineering II
+under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science,
+College of Engineering, University of the Philippines, Diliman for the AY 2014-2015.
  * Activity for viewing an individual task
  * contains edit and delete buttons
  */
+ 
 public class ViewTaskActivity extends Activity {
      CalendarData dat;
      int position;

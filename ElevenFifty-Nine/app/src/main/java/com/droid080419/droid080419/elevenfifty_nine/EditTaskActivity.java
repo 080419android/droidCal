@@ -17,11 +17,14 @@ import java.util.Map;
 
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Louie on 2/26/2015.
- *
- * Allows a task to be edited
- */
+/*
+Author: Louie Buera
+License: 
+This is a course requirement for CS 192 Software Engineering II
+under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science,
+College of Engineering, University of the Philippines, Diliman for the AY 2014-2015.
+*/
+
 public class EditTaskActivity extends FragmentActivity implements TaskEditor{
      CalendarData dat;
      EditText eName;

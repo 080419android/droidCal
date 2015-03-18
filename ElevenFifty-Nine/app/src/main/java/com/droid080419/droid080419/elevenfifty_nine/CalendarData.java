@@ -10,12 +10,12 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Transfer Object for the Data Access Object.
- * For use in system scheduler.
- *
- * @author Louie, Genesis
- * @version Feb. 11, 2015, 09:38 AM
+/*
+Author: Louie Buera
+License: 
+This is a course requirement for CS 192 Software Engineering II
+under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science,
+College of Engineering, University of the Philippines, Diliman for the AY 2014-2015.
  */
 
 

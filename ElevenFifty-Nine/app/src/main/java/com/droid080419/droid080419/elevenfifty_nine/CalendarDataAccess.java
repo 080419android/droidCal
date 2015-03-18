@@ -9,9 +9,14 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- * Created by genesis on 2/13/15.
- */
+/*
+Author: Genesis Palaganas
+License: 
+This is a course requirement for CS 192 Software Engineering II
+under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science,
+College of Engineering, University of the Philippines, Diliman for the AY 2014-2015.
+*/
+
 public class CalendarDataAccess {
 
      private File dataFile;

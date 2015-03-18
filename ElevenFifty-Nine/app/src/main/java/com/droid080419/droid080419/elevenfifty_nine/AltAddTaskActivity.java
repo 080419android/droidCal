@@ -13,11 +13,14 @@ import java.util.Date;
 
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Louie on 2/26/2015.
- *
- * Alternate activity for adding a task to the calendar. Will be renamed and replace AddTaskActivity
- */
+/*
+Author: Louie Buera
+License: 
+This is a course requirement for CS 192 Software Engineering II
+under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science,
+College of Engineering, University of the Philippines, Diliman for the AY 2014-2015.
+*/
+
 public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      EditText eName;
      EditText eDesc;

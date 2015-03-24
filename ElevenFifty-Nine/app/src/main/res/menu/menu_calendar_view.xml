@@ -10,4 +10,6 @@
            app:showAsAction="never"/>
      <item android:id="@+id/action_add_alt"
            android:title="Alt Event"/>
+     <item android:id="@+id/action_test_map"
+           android:title="Test Map"/>
 </menu>

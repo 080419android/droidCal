@@ -152,8 +152,13 @@ public class  CalendarViewActivity extends Activity {
                startActivity(intent);
           }
 
-          if (id == R.id.action_settings) {
+          if (id == R.id.action_settings){
                return true;
+          }
+
+          if(id == R.id.action_test_map){
+               Intent intent = new Intent(this,TestMapActivity.class);
+               startActivity(intent);
           }
 
           return super.onOptionsItemSelected(item);

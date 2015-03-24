@@ -45,6 +45,11 @@
             android:label="@string/title_activity_month_calendar_activtity" >
         </activity>
         <activity
+            android:name=".TestMapActivity"
+            android:label="TestMapActivity"
+            android:parentActivityName=".CalendarViewActivity">
+        </activity>
+        <activity
              android:name=".EditTaskActivity"
              android:label="EditTaskActivity"
              android:parentActivityName=".CalendarViewActivity">

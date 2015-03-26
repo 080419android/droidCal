@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 /*
 Author: Louie Buera
 License: 
@@ -69,6 +71,11 @@ public class ViewTaskActivity extends Activity {
      public void onResume(){
           super.onResume();
           Log.wtf("Resume Message","RESUME");
+          name.setText(dat.getName());
+          startDate.setText(CalendarGlobals.stringDate(dat.getStartDate()));
+          endDate.setText(CalendarGlobals.stringDate(dat.getEndDate()));
+          startTime.setText(CalendarGlobals.stringTime(dat.getStartDate()));
+          endTime.setText(CalendarGlobals.stringTime(dat.getEndDate()));
      }
 
      @Override

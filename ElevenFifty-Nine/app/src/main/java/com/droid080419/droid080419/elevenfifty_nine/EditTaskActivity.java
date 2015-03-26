@@ -39,6 +39,7 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
      Date endDate;
      Date startTime;
      Date endTime;
+     String name;
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,10 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           endDate = dat.getEndDate();
           startTime = dat.getStartDate();
           endTime = dat.getEndDate();
+          name = dat.getName();
 
           //updating views with data
+          eName.setText(name);
           eStartDate.setText(CalendarGlobals.stringDate(startDate));
           eStartTime.setText(CalendarGlobals.stringTime(startTime));
           eEndDate.setText(CalendarGlobals.stringDate(endDate));

@@ -141,11 +141,6 @@ public class  CalendarViewActivity extends Activity {
 
           //noinspection SimplifiableIfStatement
 
-          switch(id){
-               case R.id.action_add:
-                    Intent intent = new Intent(this, AddTaskActivity.class);
-                    startActivity(intent);
-          }
 
           if(id == R.id.action_add_alt){
                Intent intent = new Intent(this,AltAddTaskActivity.class);

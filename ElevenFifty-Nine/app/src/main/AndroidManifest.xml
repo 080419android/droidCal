@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -51,6 +53,13 @@
              android:parentActivityName=".CalendarViewActivity">
 
         </activity>
+
+         <activity android:name=".MapsActivity"
+                   android:label="MapsActivity"
+                   android:parentActivityName=".CalendarViewActivity">
+
+         </activity>
+
         <activity android:name="com.droid080419.droid080419.elevenfifty_nine.TestMapActivity2"
                   android:label="@string/title_activity_test_map_activity2">
             <meta-data android:name="android.support.PARENT_ACTIVITY"

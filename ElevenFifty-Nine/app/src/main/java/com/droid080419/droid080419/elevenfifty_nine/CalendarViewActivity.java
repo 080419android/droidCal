@@ -157,7 +157,7 @@ public class  CalendarViewActivity extends Activity {
           }
 
           if(id == R.id.action_test_map){
-               Intent intent = new Intent(this,TestMapActivity2.class);
+               Intent intent = new Intent(this,MapsActivity.class);
                startActivity(intent);
           }
 

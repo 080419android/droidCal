@@ -17,5 +17,6 @@
     <string name="action_add">Add Event</string>
     <string name="title_activity_month_calendar_activtity">MonthCalendarActivtity</string>
     <string name="title_activity_test_map_activity2">Map</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

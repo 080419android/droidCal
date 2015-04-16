@@ -117,6 +117,7 @@ public class CalendarDataController {
                          //data.writeIsAllDayData();
                     }break;
                     case DESCRIPTION:{
+                         Log.wtf("Description","Here at Description " + (String)val );
                          data.setDescription((String)val);
                          //data.writeDescriptionData();
                     }break;

@@ -1,5 +1,7 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import android.util.Log;
+
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,6 +28,7 @@ public class CalendarGlobals {
 
      public static String stringDate(Date dat){
           //returns a string representing the date portion of a date object
+          Log.wtf("Date", "Date extracted " + dat.toString());
           return dat.toString().substring(0,10) + dat.toString().substring(29);
      }
 

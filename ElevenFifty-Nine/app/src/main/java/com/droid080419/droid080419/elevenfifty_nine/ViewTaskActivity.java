@@ -76,6 +76,7 @@ public class ViewTaskActivity extends Activity {
           endDate.setText(CalendarGlobals.stringDate(dat.getEndDate()));
           startTime.setText(CalendarGlobals.stringTime(dat.getStartDate()));
           endTime.setText(CalendarGlobals.stringTime(dat.getEndDate()));
+          desc.setText(dat.getDescription());
      }
 
      @Override

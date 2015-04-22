@@ -57,7 +57,6 @@ public class  CalendarViewActivity extends Activity {
      @Override
      protected void onResume() {
           super.onResume();
-          CalendarGlobals.calDC = new CalendarDataController(this);
           loadEvents();
           events = (ListView)findViewById(R.id.eventsList);
           adapt = new EventLineAdapter();
@@ -144,8 +143,13 @@ public class  CalendarViewActivity extends Activity {
 
           switch(id){
                case R.id.action_add:
-                    Intent intent = new Intent(this,AltAddTaskActivity.class);
+                    Intent intent = new Intent(this, AddTaskActivity.class);
                     startActivity(intent);
+          }
+
+          if(id == R.id.action_add_alt){
+               Intent intent = new Intent(this,AltAddTaskActivity.class);
+               startActivity(intent);
           }
 
           if (id == R.id.action_settings) {

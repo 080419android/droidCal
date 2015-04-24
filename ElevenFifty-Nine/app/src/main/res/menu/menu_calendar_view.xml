@@ -4,10 +4,13 @@
       tools:context=".CalendarViewActivity">
      <item android:id="@+id/action_add"
            android:title="@string/action_add"/>
+
+    <item android:id="@+id/action_test_map"
+          android:title="Test Map"/>
+
      <item android:id="@+id/action_settings"
            android:title="Settings"
            android:orderInCategory="100"
            app:showAsAction="never"/>
-     <item android:id="@+id/action_add_alt"
-           android:title="Alt Event"/>
+
 </menu>

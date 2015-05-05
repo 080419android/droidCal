@@ -11,6 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -45,23 +47,18 @@
             android:name=".MonthCalendarActivtity"
             android:label="@string/title_activity_month_calendar_activtity" >
         </activity>
-        <!--<activity
-            android:name=".TestMapActivity"
-            android:label="TestMapActivity"
-            android:parentActivityName=".CalendarViewActivity">
-        </activity>-->
         <activity
              android:name=".EditTaskActivity"
              android:label="EditTaskActivity"
              android:parentActivityName=".CalendarViewActivity">
 
         </activity>
-        <activity android:name="com.droid080419.droid080419.elevenfifty_nine.TestMapActivity2"
-                  android:label="@string/title_activity_test_map_activity2">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                       android:value="com.droid080419.droid080419.elevenfifty_nine.CalendarViewActivity" />
 
+        <activity android:name=".MapsActivity"
+                  android:label="MapsActivity"
+                  android:parentActivityName=".CalendarViewActivity">
         </activity>
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyB5A6h3NBVlvKUUwW0PNTqOUYDQr6vPhQ0"/>

@@ -85,40 +85,47 @@ public class CalendarDataController {
 
      }
 
-     public void updateEvent(CalendarData data, Map<String,Object> updates){
+     public void updateEvent(CalendarData calData, Map<String,Object> updates){
 
-
+          CalendarData data = new CalendarData(Integer.parseInt(calData.getId()),context);
           for(String key: updates.keySet()){
                Object val = updates.get(key);
                switch(CalendarDataField.valueOf(key.toUpperCase())){
                     case NAME:{
                          data.setName((String)val);
+                         calData.setName((String)val);
 
                     }break;
                     case START_DATE:{
                          data.setStartDate((Date)val);
+                         calData.setStartDate((Date)val);
                          //data.writeStartDateData();
                     }break;
                     case END_DATE:{
                          data.setEndDate((Date)val);
+                         calData.setEndDate((Date)val);
                          Log.w("END_DATE",data.getEndDate().toString());
                          //data.writeEndDateData();
                     }break;
                     case REPEAT_EVERY:{
-                         data.setRepeatEvery((Date)val);
+                         data.setEndDate((Date)val);
+                         calData.setEndDate((Date)val);
                          //data.writeRepeatEveryData();
                     }break;
                     case REPEAT_UNTIL:{
                          data.setRepeatUntil((Date)val);
+                         calData.setRepeatUntil((Date)val);
                          //data.writeRepeatUntilData();
                     }break;
                     case IS_ALL_DAY:{
-                         data.setIsAllDay((Boolean)val);
+                         data.setRepeatUntil((Date)val);
+                         calData.setRepeatUntil((Date)val);
                          //data.writeIsAllDayData();
                     }break;
                     case DESCRIPTION:{
                          Log.wtf("Description","Here at Description " + (String)val );
                          data.setDescription((String)val);
+                         calData.setDescription((String)val);
                          //data.writeDescriptionData();
                     }break;
                }

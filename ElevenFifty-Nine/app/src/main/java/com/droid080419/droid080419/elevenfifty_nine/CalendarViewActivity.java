@@ -145,7 +145,12 @@ public class  CalendarViewActivity extends Activity {
                case R.id.action_add:
                     Intent intent = new Intent(this, AltAddTaskActivity.class);
                     startActivity(intent);
+
+               case R.id.action_test_map_2:
+                    Intent intent2 = new Intent(this, TestMapActivity2.class);
+                    startActivity(intent2);
           }
+
 
           if (id == R.id.action_settings) {
                return true;

@@ -69,6 +69,7 @@ public class CalendarDataAccess {
 
      //Saves the changes in the data file by closing the FileWriter
      public void save(){
+          fileWriter.flush();
           fileWriter.close();
      }
 

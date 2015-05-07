@@ -5,6 +5,7 @@ import android.content.Intent;
 //import android.support.v7.app.ActionBarActivity;
 //import android.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -146,9 +147,6 @@ public class  CalendarViewActivity extends Activity {
                     Intent intent = new Intent(this, AltAddTaskActivity.class);
                     startActivity(intent);
 
-               case R.id.action_test_map_2:
-                    Intent intent2 = new Intent(this, TestMapActivity2.class);
-                    startActivity(intent2);
           }
 
 

@@ -74,7 +74,7 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           eEndDate.setText(CalendarGlobals.stringDate(endDate));
           eEndTime.setText(CalendarGlobals.stringTime(endTime));
 
-          sdf = new SimpleDateFormat("MMMMM dd, yyyy - h:mm a");
+          sdf = new SimpleDateFormat("MMMM dd, yyyy - h:mm a");
      }
 
      @Override

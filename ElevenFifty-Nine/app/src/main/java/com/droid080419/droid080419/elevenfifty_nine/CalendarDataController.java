@@ -88,6 +88,15 @@ public class CalendarDataController {
      public void updateEvent(CalendarData calData, Map<String,Object> updates){
 
           CalendarData data = new CalendarData(Integer.parseInt(calData.getId()),context);
+
+          data.setDescription(calData.getDescription());
+          data.setName(calData.getName());
+          data.setEndDate(calData.getEndDate());
+          data.setStartDate(calData.getStartDate());
+          data.setRepeatEvery(calData.getRepeatEvery());
+          data.setRepeatUntil(calData.getRepeatUntil());
+          data.setIsAllDay(calData.getIsAllDay());
+
           for(String key: updates.keySet()){
                Object val = updates.get(key);
                switch(CalendarDataField.valueOf(key.toUpperCase())){

@@ -81,11 +81,15 @@ public class CalendarData
           setName(calDA.getData(CalendarDataField.NAME));
           Log.wtf("Description",calDA.getData(CalendarDataField.DESCRIPTION));
           setDescription(calDA.getData(CalendarDataField.DESCRIPTION));
-          Log.wtf("Start date",calDA.getData(CalendarDataField.START_DATE));
           setStartDate(sdf.parse(calDA.getData(CalendarDataField.START_DATE),pos));
+          Log.wtf("Calendar view End Date",calDA.getData(CalendarDataField.END_DATE));
+          pos.setIndex(0);
           setEndDate(sdf.parse(calDA.getData(CalendarDataField.END_DATE),pos));
+          Log.wtf("End date",calDA.getData(CalendarDataField.END_DATE));
           setIsAllDay(Boolean.valueOf(calDA.getData(CalendarDataField.IS_ALL_DAY)));
+          pos.setIndex(0);
           setRepeatEvery(sdf.parse(calDA.getData(CalendarDataField.REPEAT_EVERY),pos));
+          pos.setIndex(0);
           setRepeatUntil(sdf.parse(calDA.getData(CalendarDataField.REPEAT_UNTIL),pos));
 
 

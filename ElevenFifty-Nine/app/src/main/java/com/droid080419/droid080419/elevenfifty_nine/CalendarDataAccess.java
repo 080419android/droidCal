@@ -58,6 +58,7 @@ public class CalendarDataAccess {
 
      //Gets the data in the corresponding field
      public String getData(CalendarDataField field){
+
           return this.dataMap.get(field);
      }
 

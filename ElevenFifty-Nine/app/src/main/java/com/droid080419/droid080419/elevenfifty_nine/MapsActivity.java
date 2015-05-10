@@ -50,8 +50,7 @@ public class MapsActivity extends FragmentActivity {
 
           if (mMap == null) {
                // Try to obtain the map from the SupportMapFragment.
-               mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                       .getMap();
+               mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
                // Check if we were successful in obtaining the map.
                if (mMap != null) {
                     setUpMap();
@@ -67,6 +66,7 @@ public class MapsActivity extends FragmentActivity {
       */
      private void setUpMap() {
           mMap.addMarker(new MarkerOptions().position(UPD).title("UPD"));
-          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(BORACAY,15));
+          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UPD,15));
+          mMap.setMyLocationEnabled(true);
      }
 }

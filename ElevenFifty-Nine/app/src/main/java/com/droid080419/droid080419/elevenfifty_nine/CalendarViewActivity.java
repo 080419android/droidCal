@@ -159,6 +159,12 @@ public class  CalendarViewActivity extends Activity {
                startActivity(intent);
           }
 
+          if(id == R.id.action_about){
+              Intent intent = new Intent(this,AboutActivity.class);
+              startActivity(intent);
+          }
+
+
           return super.onOptionsItemSelected(item);
      }
 

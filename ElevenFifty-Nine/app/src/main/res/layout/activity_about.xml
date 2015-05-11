@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:textSize="25dp"
+        android:id="@+id/about_app_name"
+        android:text="ElevenFiftynine Calendar Application"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="9"
+        android:textSize="20dp"
+        android:id="@+id/about_group_name"
+        android:text="by 080419Android"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#FFFFFF"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/about_app_description"
+        android:text="
+
+        This is a course requirement for CS 192 Software Engineering II under the supervision of Asst. Prof. Ma. Rowena C. Solamo of the Department of Computer Science,College of Engineering, University of the Philippines, Diliman for the AY 2014-2015."
+        android:textSize="15dp" />
+
+</LinearLayout>

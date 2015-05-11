@@ -129,16 +129,25 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"
-            android:id="@+id/view_task_delete_button"
-            android:layout_marginBottom="48dp"
-            android:onClick="deleteData"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Edit"
             android:id="@+id/view_task_edit_button"
             android:layout_marginBottom="48dp"
             android:onClick="editData"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:id="@+id/view_task_delete_button"
+            android:layout_marginBottom="48dp"
+            android:onClick="deleteData"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:id="@+id/view_task_location_button"
+            android:layout_marginBottom="48dp"
+            android:onClick="showLocation"/>
     </LinearLayout>
 </RelativeLayout>

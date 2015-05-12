@@ -96,6 +96,8 @@ public class CalendarDataController {
           data.setRepeatEvery(calData.getRepeatEvery());
           data.setRepeatUntil(calData.getRepeatUntil());
           data.setIsAllDay(calData.getIsAllDay());
+          data.setLatitude(calData.getLatitude());
+          data.setLongitude(calData.getLongitude());
 
           for(String key: updates.keySet()){
                Object val = updates.get(key);
@@ -137,6 +139,16 @@ public class CalendarDataController {
                          calData.setDescription((String)val);
                          //data.writeDescriptionData();
                     }break;
+                    case LATITUDE:{
+                         data.setLatitude((double) val);
+                         calData.setLatitude((double) val);
+
+                    }break;
+                    case LONGITUDE: {
+                         data.setLongitude((double)val);
+                         calData.setLatitude((double)val);
+                    }
+
                }
 
           }

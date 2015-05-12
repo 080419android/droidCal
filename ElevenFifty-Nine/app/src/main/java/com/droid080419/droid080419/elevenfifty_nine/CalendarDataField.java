@@ -10,6 +10,6 @@ College of Engineering, University of the Philippines, Diliman for the AY 2014-2
 
 //Enumeration of the valid Calendar Data Fields
 public enum CalendarDataField {
-     ID, NAME, START_DATE, END_DATE, REPEAT_EVERY, REPEAT_UNTIL, IS_ALL_DAY, DESCRIPTION;
+     ID, NAME, START_DATE, END_DATE, REPEAT_EVERY, REPEAT_UNTIL, IS_ALL_DAY, DESCRIPTION, LONGITUDE, LATITUDE;
 
 }

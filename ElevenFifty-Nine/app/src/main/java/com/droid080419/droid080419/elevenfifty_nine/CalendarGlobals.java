@@ -2,6 +2,8 @@ package com.droid080419.droid080419.elevenfifty_nine;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +27,8 @@ public class CalendarGlobals {
      public static Boolean isStartTime;
      public static File dir;
      public static CalendarData being_edited;
+     public static LatLng gps;
+     public static boolean locationSet;
 
      public static String stringDate(Date dat){
           //returns a string representing the date portion of a date object

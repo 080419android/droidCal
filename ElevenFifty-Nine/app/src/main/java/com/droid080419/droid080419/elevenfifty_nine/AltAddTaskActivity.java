@@ -1,6 +1,7 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +38,7 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      Date endDate;
      Date startTime;
      Date endTime;
+     LatLng coords;
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {   //initializing the activity
@@ -64,6 +69,22 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           eEndTime.setText(CalendarGlobals.stringTime(endTime));
 
           sdf = new SimpleDateFormat("MMMMM dd, yyyy - h:mm a");
+     }
+
+     @Override
+     protected void onResume() {
+          super.onResume();
+          if(CalendarGlobals.locationSet) {
+               coords = new LatLng(CalendarGlobals.gps.latitude, CalendarGlobals.gps.longitude);
+               CalendarGlobals.locationSet = false;
+          }
+     }
+
+     public void setLocation(View view){
+          CalendarGlobals.alt = this;
+          Intent intent = new Intent(this,AddTaskMapActivity.class);
+          CalendarGlobals.locationSet = false;
+          startActivity(intent);
      }
 
      @Override

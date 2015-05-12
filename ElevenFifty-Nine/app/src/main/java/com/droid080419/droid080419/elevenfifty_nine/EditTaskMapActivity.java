@@ -1,16 +1,20 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity {
+/**
+ * Created by Louie on 5/12/2015.
+ */
+public class EditTaskMapActivity extends FragmentActivity {
 
      private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -21,6 +25,25 @@ public class MapsActivity extends FragmentActivity {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_maps);
           setUpMapIfNeeded();
+     }
+
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+          getMenuInflater().inflate(R.menu.menu_set_location, menu);
+          return true;
+     }
+
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+          int id = item.getItemId();
+
+          switch(id){
+               case R.id.action_set_location:
+                    CalendarGlobals.locationSet = true;
+                    finish();
+          }
+
+          return super.onOptionsItemSelected(item);
      }
 
      @Override

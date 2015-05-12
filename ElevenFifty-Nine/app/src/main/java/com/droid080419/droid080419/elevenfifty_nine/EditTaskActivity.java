@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +43,7 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
      Date startTime;
      Date endTime;
      String name;
+     LatLng coords;
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,15 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           eEndTime.setText(CalendarGlobals.stringTime(endTime));
 
           sdf = new SimpleDateFormat("MMMM dd, yyyy - h:mm a");
+     }
+
+     @Override
+     protected void onResume() {
+          super.onResume();
+          if(CalendarGlobals.locationSet) {
+               coords = new LatLng(CalendarGlobals.gps.latitude, CalendarGlobals.gps.longitude);
+               CalendarGlobals.locationSet = false;
+          }
      }
 
      @Override

@@ -58,6 +58,18 @@
             android:parentActivityName=".CalendarViewActivity" >
         </activity>
 
+        <activity
+            android:name=".AddTaskMapActivity"
+            android:label="AddTaskMapActivity"
+            android:parentActivityName=".AltAddTaskActivity" >
+        </activity>
+
+        <activity
+            android:name=".EditTaskMapActivity"
+            android:label="EditTaskMapActivity"
+            android:parentActivityName=".EditTaskActivity" >
+        </activity>
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAIGJKjZpnk1kTl_k6CTThfxs9XpPPd_t4" />

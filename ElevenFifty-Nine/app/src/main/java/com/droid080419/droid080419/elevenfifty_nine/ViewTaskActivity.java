@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Calendar;
 
 /*
@@ -29,6 +31,7 @@ public class ViewTaskActivity extends Activity {
      TextView startTime;
      TextView endTime;
      TextView desc;
+     LatLng coords;
 
 
      @Override
@@ -65,6 +68,9 @@ public class ViewTaskActivity extends Activity {
           }
           desc.setText(dat.getDescription());
 
+          //loading
+          coords = new LatLng(dat.getLatitude(),dat.getLongitude());
+
      }
 
      @Override
@@ -96,6 +102,14 @@ public class ViewTaskActivity extends Activity {
           //Is called when 'Edit' button is tapped, starts EditTaskActivity
           Intent intent = new Intent(ViewTaskActivity.this,EditTaskActivity.class);
           intent.putExtra(CalendarViewActivity.data_holder,position);
+          startActivity(intent);
+     }
+
+     public void showLocation(View view){
+          Intent intent = new Intent(ViewTaskActivity.this,MapsActivity.class);
+          intent.putExtra("LATITUDE",coords.latitude);
+          intent.putExtra("LONGITUDE",coords.longitude);
+          CalendarGlobals.gps = coords;
           startActivity(intent);
      }
 

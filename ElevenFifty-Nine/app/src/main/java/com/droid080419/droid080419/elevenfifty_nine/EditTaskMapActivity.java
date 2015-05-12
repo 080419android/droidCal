@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,10 +20,26 @@ public class EditTaskMapActivity extends FragmentActivity {
      private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
      static final LatLng UPD = new LatLng(14.6549,121.0645);
+     boolean def;
+     LatLng coords;
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
+          if(savedInstanceState == null || savedInstanceState.isEmpty()){
+               coords = UPD;
+               def = true;
+          }else {
+               double lat = savedInstanceState.getDouble("LATITUDE", 12345.0f);
+               double longitude = savedInstanceState.getDouble("LONGITUDE", 6789.0f);
+               if (lat > 360.0f || longitude > 360.0f) {
+                    coords = UPD;
+                    def = true;
+               } else {
+                    coords = new LatLng(lat, longitude);
+                    def = false;
+               }
+          }
           setContentView(R.layout.activity_maps);
           setUpMapIfNeeded();
      }
@@ -56,6 +73,8 @@ public class EditTaskMapActivity extends FragmentActivity {
                     CalendarGlobals.gps = new LatLng(latLng.latitude,latLng.longitude);
                     mMap.clear();
                     mMap.addMarker(new MarkerOptions().position(latLng).title("Current Position"));
+                    Toast t = Toast.makeText(getApplicationContext(),"Location Changed",Toast.LENGTH_SHORT);
+                    t.show();
                }
           });
      }
@@ -98,9 +117,13 @@ public class EditTaskMapActivity extends FragmentActivity {
 
 
      private void setUpMap() {
-          mMap.addMarker(new MarkerOptions().position(UPD).title("Default: UPD"));
-          CalendarGlobals.gps = new LatLng(UPD.latitude,UPD.longitude);
-          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UPD, 15));
+          if(def) {
+               mMap.addMarker(new MarkerOptions().position(UPD).title("Default: UPD"));
+               CalendarGlobals.gps = new LatLng(UPD.latitude, UPD.longitude);
+          }else{
+               mMap.addMarker(new MarkerOptions().position(coords).title("Current Position"));
+          }
+          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coords, 15));
           mMap.setMyLocationEnabled(true);
 
      }

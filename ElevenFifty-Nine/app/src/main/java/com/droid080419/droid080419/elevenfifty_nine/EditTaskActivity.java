@@ -70,6 +70,7 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           startTime = dat.getStartDate();
           endTime = dat.getEndDate();
           name = dat.getName();
+          coords = new LatLng(dat.getLatitude(),dat.getLongitude());
 
           //updating views with data
           eName.setText(name);
@@ -88,6 +89,15 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
                coords = new LatLng(CalendarGlobals.gps.latitude, CalendarGlobals.gps.longitude);
                CalendarGlobals.locationSet = false;
           }
+     }
+
+     public void setLocation(View view){
+          CalendarGlobals.alt = this;
+          Intent intent = new Intent(this,EditTaskMapActivity.class);
+          intent.putExtra("LATITUDE",coords.latitude);
+          intent.putExtra("LONGITUDE",coords.longitude);
+          CalendarGlobals.locationSet = false;
+          startActivity(intent);
      }
 
      @Override
@@ -152,6 +162,8 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           hm.put("END_DATE",CalendarGlobals.merge(endDate,endTime));
           hm.put("REPEAT_EVERY",new Date());
           hm.put("REPEAT_UNTIL",new Date());
+          hm.put("LATITUDE",coords.latitude);
+          hm.put("LONGITUDE",coords.longitude);
           //updates data using hashmap
           CalendarGlobals.calDC.updateEvent(dat,hm);
 

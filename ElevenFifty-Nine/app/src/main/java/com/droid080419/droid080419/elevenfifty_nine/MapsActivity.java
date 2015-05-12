@@ -2,6 +2,8 @@ package com.droid080419.droid080419.elevenfifty_nine;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,14 +18,35 @@ public class MapsActivity extends FragmentActivity {
 
      static final LatLng UPD = new LatLng(14.6549,121.0645);
 
+     LatLng coords;
+     boolean def;
      @Override
      protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
+          if(savedInstanceState == null)
+               Log.d("MAPS", "Nunully");
+          if(savedInstanceState == null || savedInstanceState.isEmpty()){
+               coords = CalendarGlobals.gps;
+               //def = true;
+               Log.d("MAPS","DEFAULT");
+          }else {
+               double lat = savedInstanceState.getDouble("LATITUDE", 12345.0f);
+               double longitude = savedInstanceState.getDouble("LONGITUDE", 6789.0f);
+               if (lat > 360.0f || longitude > 360.0f) {
+                    coords = UPD;
+                    def = true;
+               } else {
+                    coords = new LatLng(lat, longitude);
+                    def = false;
+               }
+               Log.d("MAPS","not default" + Double.toString(lat) + "," + Double.toString(longitude) );
+          }
           setContentView(R.layout.activity_maps);
           setUpMapIfNeeded();
      }
 
-     @Override
+     //un-comment if to be used in debugging
+     /*@Override
      protected void onResume() {
           super.onResume();
           setUpMapIfNeeded();
@@ -33,9 +56,11 @@ public class MapsActivity extends FragmentActivity {
                     CalendarGlobals.gps = new LatLng(latLng.latitude,latLng.longitude);
                     mMap.clear();
                     mMap.addMarker(new MarkerOptions().position(latLng).title("Current Position"));
+                    Toast t = Toast.makeText(getApplicationContext(),"Location Changed",Toast.LENGTH_SHORT);
+                    t.show();
                }
           });
-     }
+     }*/
 
      /**
       * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
@@ -75,9 +100,13 @@ public class MapsActivity extends FragmentActivity {
 
 
      private void setUpMap() {
-          mMap.addMarker(new MarkerOptions().position(UPD).title("Default: UPD"));
-          CalendarGlobals.gps = new LatLng(UPD.latitude,UPD.longitude);
-          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UPD, 15));
+          if(def) {
+               mMap.addMarker(new MarkerOptions().position(UPD).title("Default: UPD"));
+               CalendarGlobals.gps = new LatLng(UPD.latitude, UPD.longitude);
+          }else{
+               mMap.addMarker(new MarkerOptions().position(coords).title("Current Position"));
+          }
+          mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coords, 15));
           mMap.setMyLocationEnabled(true);
 
      }

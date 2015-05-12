@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +41,8 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      Date endTime;
      LatLng coords;
 
+     public static final int ADD_TASK_REQUEST = 56563;
+
      @Override
      protected void onCreate(Bundle savedInstanceState) {   //initializing the activity
           super.onCreate(savedInstanceState);
@@ -69,22 +72,45 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           eEndTime.setText(CalendarGlobals.stringTime(endTime));
 
           sdf = new SimpleDateFormat("MMMMM dd, yyyy - h:mm a");
+
+          //sets default coordinates to UPD
+          coords = new LatLng(MapsActivity.UPD.latitude,MapsActivity.UPD.longitude);
      }
 
-     @Override
+     /*@Override
      protected void onResume() {
           super.onResume();
           if(CalendarGlobals.locationSet) {
                coords = new LatLng(CalendarGlobals.gps.latitude, CalendarGlobals.gps.longitude);
                CalendarGlobals.locationSet = false;
           }
-     }
+     }*/
 
      public void setLocation(View view){
           CalendarGlobals.alt = this;
           Intent intent = new Intent(this,AddTaskMapActivity.class);
+          intent.putExtra("LATITUDE",coords.latitude);
+          intent.putExtra("LONGITUDE",coords.longitude);
+
+
+          Log.d("MAPS", "Latitude starter" + Double.toString(coords.latitude));
+          Log.d("MAPS","Longitude starter" + Double.toString(coords.longitude));
+
           CalendarGlobals.locationSet = false;
-          startActivity(intent);
+          CalendarGlobals.gps = coords;
+          startActivityForResult(intent, ADD_TASK_REQUEST);
+     }
+
+     @Override
+     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+          if(requestCode == ADD_TASK_REQUEST && resultCode == RESULT_OK){
+               if(data != null && data.hasExtra("LATITUDE") && data.hasExtra("LONGITUDE")){
+                    coords = new LatLng(data.getDoubleExtra("LATITUDE",MapsActivity.UPD.latitude),
+                            data.getDoubleExtra("LONGITUDE",MapsActivity.UPD.longitude));
+                    Log.d("MAPS", "EXTRas");
+               }
+          }
+          super.onActivityResult(requestCode, resultCode, data);
      }
 
      @Override
@@ -117,8 +143,6 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
      }
 
      public void endTimeDialog(View view){   //opens a dialog fragment to input end time
-
-
           CalendarGlobals.alt = this;
           CalendarGlobals.isStartTime = false;
           DialogFragment newFrag = new TimePickerFragment();
@@ -155,6 +179,8 @@ public class AltAddTaskActivity extends FragmentActivity implements TaskEditor{
           data.setRepeatEvery(junk);
           data.setRepeatUntil(junk);
           data.setIsAllDay(true);
+          data.setLatitude(coords.latitude);
+          data.setLongitude(coords.longitude);
 
           //save the data
           data.save();

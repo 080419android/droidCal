@@ -140,8 +140,9 @@ public class CalendarDataController {
                          //data.writeDescriptionData();
                     }break;
                     case LATITUDE:{
-                         data.setLatitude((double) val);
-                         calData.setLatitude((double) val);
+                         Log.wtf("Edit Latitude",((Double) val).toString());
+                         data.setLatitude(((Double) val).doubleValue());
+                         calData.setLatitude(((Double) val).doubleValue());
 
                     }break;
                     case LONGITUDE: {
@@ -153,9 +154,6 @@ public class CalendarDataController {
 
           }
 
-          //data.writeNameData();
-
-          //data.saveChanges();
           data.save();
      }
 

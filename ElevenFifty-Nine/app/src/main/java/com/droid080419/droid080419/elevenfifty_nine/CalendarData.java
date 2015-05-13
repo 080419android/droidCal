@@ -32,8 +32,8 @@ public class CalendarData
      private Date repeat_until;
      private String description;
      private String name;
-     private double latitude;
-     private double longitude;
+     private Double latitude;
+     private Double longitude;
 
      private SimpleDateFormat sdf;
      private CalendarDataAccess calDA;
@@ -93,6 +93,9 @@ public class CalendarData
           setRepeatEvery(sdf.parse(calDA.getData(CalendarDataField.REPEAT_EVERY),pos));
           pos.setIndex(0);
           setRepeatUntil(sdf.parse(calDA.getData(CalendarDataField.REPEAT_UNTIL),pos));
+          setLatitude(Double.valueOf(calDA.getData(CalendarDataField.LATITUDE)));
+          setLongitude(Double.valueOf(calDA.getData(CalendarDataField.LONGITUDE)));
+
 
 
      }
@@ -135,8 +138,8 @@ public class CalendarData
      public File getDataFile(){
           return dataFile;
      }
-     public double getLatitude(){ return latitude; }
-     public double getLongitude(){ return longitude; }
+     public double getLatitude(){ return latitude.doubleValue(); }
+     public double getLongitude(){ return longitude.doubleValue(); }
 
      //Setter functions
      public void setId(String id){
@@ -163,8 +166,8 @@ public class CalendarData
      public void setName(String name){
           this.name = name;
      }
-     public void setLatitude(double latitude){ this.latitude = latitude; }
-     public void setLongitude(double longitude ){ this.longitude = longitude; }
+     public void setLatitude(double latitude){ this.latitude = Double.valueOf(latitude); }
+     public void setLongitude(double longitude ){ this.longitude = Double.valueOf(longitude); }
 
      //Saves the changes to the file
      public void save(){

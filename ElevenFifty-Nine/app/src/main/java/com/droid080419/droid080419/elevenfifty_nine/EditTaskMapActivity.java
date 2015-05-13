@@ -1,7 +1,9 @@
 package com.droid080419.droid080419.elevenfifty_nine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -26,9 +28,12 @@ public class EditTaskMapActivity extends FragmentActivity {
      @Override
      protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
+          if(savedInstanceState == null)
+               Log.d("MAPS","Nunully");
           if(savedInstanceState == null || savedInstanceState.isEmpty()){
-               coords = UPD;
-               def = true;
+               coords = CalendarGlobals.gps;
+               //def = true;
+               Log.d("MAPS","DEFAULT");
           }else {
                double lat = savedInstanceState.getDouble("LATITUDE", 12345.0f);
                double longitude = savedInstanceState.getDouble("LONGITUDE", 6789.0f);
@@ -39,6 +44,7 @@ public class EditTaskMapActivity extends FragmentActivity {
                     coords = new LatLng(lat, longitude);
                     def = false;
                }
+               Log.d("MAPS","not default" + Double.toString(lat) + "," + Double.toString(longitude) );
           }
           setContentView(R.layout.activity_maps);
           setUpMapIfNeeded();
@@ -57,6 +63,13 @@ public class EditTaskMapActivity extends FragmentActivity {
           switch(id){
                case R.id.action_set_location:
                     CalendarGlobals.locationSet = true;
+                    CalendarGlobals.gps = coords;
+                    Intent ret = new Intent();
+                    ret.putExtra("LATITUDE",coords.latitude);
+                    ret.putExtra("LONGITUDE",coords.longitude);
+                    setResult(RESULT_OK,ret);
+                    Log.d("MAPS","Latitude" + Double.toString(coords.latitude));
+                    Log.d("MAPS","Longitude" + Double.toString(coords.longitude));
                     finish();
           }
 
@@ -71,6 +84,7 @@ public class EditTaskMapActivity extends FragmentActivity {
                @Override
                public void onMapLongClick(LatLng latLng) {
                     CalendarGlobals.gps = new LatLng(latLng.latitude,latLng.longitude);
+                    coords = latLng;
                     mMap.clear();
                     mMap.addMarker(new MarkerOptions().position(latLng).title("Current Position"));
                     Toast t = Toast.makeText(getApplicationContext(),"Location Changed",Toast.LENGTH_SHORT);
@@ -116,6 +130,7 @@ public class EditTaskMapActivity extends FragmentActivity {
 
 
 
+
      private void setUpMap() {
           if(def) {
                mMap.addMarker(new MarkerOptions().position(UPD).title("Default: UPD"));
@@ -125,6 +140,5 @@ public class EditTaskMapActivity extends FragmentActivity {
           }
           mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coords, 15));
           mMap.setMyLocationEnabled(true);
-
      }
 }

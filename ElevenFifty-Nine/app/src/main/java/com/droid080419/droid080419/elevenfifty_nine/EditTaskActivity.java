@@ -97,7 +97,20 @@ public class EditTaskActivity extends FragmentActivity implements TaskEditor{
           intent.putExtra("LATITUDE",coords.latitude);
           intent.putExtra("LONGITUDE",coords.longitude);
           CalendarGlobals.locationSet = false;
-          startActivity(intent);
+          CalendarGlobals.gps = coords;
+          startActivityForResult(intent, AltAddTaskActivity.ADD_TASK_REQUEST);
+     }
+
+     @Override
+     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+          if(requestCode == AltAddTaskActivity.ADD_TASK_REQUEST && resultCode == RESULT_OK){
+               if(data != null && data.hasExtra("LATITUDE") && data.hasExtra("LONGITUDE")){
+                    coords = new LatLng(data.getDoubleExtra("LATITUDE",MapsActivity.UPD.latitude),
+                              data.getDoubleExtra("LONGITUDE",MapsActivity.UPD.longitude));
+                    Log.d("MAPS", "EXTRas");
+               }
+          }
+          super.onActivityResult(requestCode, resultCode, data);
      }
 
      @Override

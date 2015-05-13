@@ -67,7 +67,6 @@ public class ViewTaskActivity extends Activity {
                endTime.setText(CalendarGlobals.stringTime(dat.getEndDate()));
           }
           desc.setText(dat.getDescription());
-
           //loading
           coords = new LatLng(dat.getLatitude(),dat.getLongitude());
 
@@ -83,6 +82,7 @@ public class ViewTaskActivity extends Activity {
           startTime.setText(CalendarGlobals.stringTime(dat.getStartDate()));
           endTime.setText(CalendarGlobals.stringTime(dat.getEndDate()));
           desc.setText(dat.getDescription());
+          coords = new LatLng(dat.getLatitude(),dat.getLongitude());
      }
 
      @Override
@@ -109,6 +109,7 @@ public class ViewTaskActivity extends Activity {
           Intent intent = new Intent(ViewTaskActivity.this,MapsActivity.class);
           intent.putExtra("LATITUDE",coords.latitude);
           intent.putExtra("LONGITUDE",coords.longitude);
+          coords = new LatLng(dat.getLatitude(),dat.getLongitude());
           CalendarGlobals.gps = coords;
           startActivity(intent);
      }

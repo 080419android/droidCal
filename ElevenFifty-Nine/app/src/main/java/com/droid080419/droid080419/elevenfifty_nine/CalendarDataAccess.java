@@ -42,8 +42,8 @@ public class CalendarDataAccess {
                Log.w("curLine ", curLine);
                try {
                     String[] split = curLine.split("::");
-                    Log.w("Line read", split[0] + "::" + split[1]);
                     ret.put(CalendarDataField.valueOf(split[0]), split[1]);
+                    Log.w("Line read", CalendarDataField.valueOf(split[0]) + "::" + split[1]);
 
                }catch(ArrayIndexOutOfBoundsException e){
                     String[] split = curLine.split("::");

@@ -130,6 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit"
+            android:icon="@drawable/ic_edit"
             android:id="@+id/view_task_edit_button"
             android:layout_marginBottom="48dp"
             android:onClick="editData"/>
@@ -138,6 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete"
+            android:icon="@drawable/ic_delete"
             android:id="@+id/view_task_delete_button"
             android:layout_marginBottom="48dp"
             android:onClick="deleteData"/>

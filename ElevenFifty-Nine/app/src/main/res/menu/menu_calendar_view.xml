@@ -3,7 +3,9 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".CalendarViewActivity">
      <item android:id="@+id/action_add"
-           android:title="@string/action_add"/>
+           android:title="@string/action_add"
+           android:icon="@drawable/ic_add"
+           android:showAsAction="ifRoom"/>
 
     <item android:id="@+id/action_test_map"
           android:title="Test Map"/>

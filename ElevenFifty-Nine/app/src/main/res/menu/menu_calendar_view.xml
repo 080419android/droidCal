@@ -7,15 +7,6 @@
            android:icon="@drawable/ic_add"
            android:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/action_test_map"
-          android:title="Test Map"
-        android:showAsAction="never"/>
-
-     <item android:id="@+id/action_settings"
-           android:title="Settings"
-           android:orderInCategory="100"
-           app:showAsAction="never"/>
-
     <item android:id="@+id/action_about"
         android:title="About"/>
 

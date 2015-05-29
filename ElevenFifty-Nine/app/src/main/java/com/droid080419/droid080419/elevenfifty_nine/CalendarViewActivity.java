@@ -150,14 +150,6 @@ public class  CalendarViewActivity extends Activity {
           }
 
 
-          if (id == R.id.action_settings) {
-               return true;
-          }
-
-          if(id == R.id.action_test_map){
-               Intent intent = new Intent(this,MapsActivity.class);
-               startActivity(intent);
-          }
 
           if(id == R.id.action_about){
               Intent intent = new Intent(this,AboutActivity.class);

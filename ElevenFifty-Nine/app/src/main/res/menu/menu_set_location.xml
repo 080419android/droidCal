@@ -5,6 +5,4 @@
       tools:context="com.droid080419.droid080419.elevenfifty_nine.AboutActivity">
     <item android:id="@+id/action_set_location"
           android:title="Save Location"/>
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-          android:orderInCategory="100" app:showAsAction="never" />
 </menu>
